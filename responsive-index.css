@@ -121,8 +121,8 @@
 
 @media only screen and (max-width: 650px) {
    .item {
-       width: 150px;
-       height: 225px;
+       width: 155px;
+       height: 232px;
        font-size: 16px;
    }
 
@@ -131,19 +131,19 @@
    }
 
    .container {
-       max-width: 480px;
+       max-width: 500px;
    }
 }
 
 @media only screen and (max-width: 500px) {
     .item {
-        width: 169px;
-        height: 255px;
+        width: 200px;
+        height: 300px;
         font-size: 16px;
     }
 
     .container {
-       max-width: 355px;
+       max-width: 416px;
     }
 
     .search {
@@ -160,14 +160,38 @@
     }
 }
 
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 415px) {
     .item {
-        width: 140px;
-        height: 210px;
+        width: 175px;
+        height: 262px;
     }
 
     .container {
-        max-width: 300px;
+        max-width: 376px;
+     }
+
+    .search {
+        width: 80px;
+        margin-left: 80px;
+    }
+
+    .search .search-overlay {
+        z-index: 4;
+    }
+
+    .item a .text {
+        transform: translateY(78%);
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .item {
+        width: 175px;
+        height: 262px;
+    }
+
+    .container {
+        max-width: 370px;
      }
 
     .search {
