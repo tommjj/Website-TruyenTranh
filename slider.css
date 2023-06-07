@@ -1,0 +1,136 @@
+.slider-container {
+    position: relative;
+    width: 100%;
+    padding-top: 40%;
+    margin-bottom: 15px;
+}
+
+.slider-container .slider-main{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.slider-container .slider-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(100%);
+
+    width: 100%;
+    height: 15px;
+}
+
+.slider-container .slider-bar button {
+    width: 20px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(196, 195, 251);
+    height: 7px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.slider-container .slider-bar button.active {
+    background-color: var(--search-button-color);
+    width: 20px;
+}
+
+
+.slider-container .slider-main .slide {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: auto;
+    transition: var(--tran-04);
+}
+
+.slide .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: .3s;
+}
+
+.slider-container .slider-main .slide img{
+    height: 100%;
+    width: auto;
+}
+
+.slider-container .slider-main .slide.between {
+    display: inline;
+    z-index: 3;
+}
+
+.slider-container .slider-main .slide.between .overlay {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+.slider-container .slider-main .slide.over-left {
+    transform: translateX(-160%) scale(0.6);
+    display: inline;
+    z-index: 1;
+}
+
+.slider-container .slider-main .slide.over-right {
+    transform: translateX(160%) scale(0.6);
+    display: inline;
+    z-index: 1;
+}
+
+
+.slider-container .slider-main .slide.left {
+    transform: translateX(-80%) scale(0.8);
+    display: inline;
+    z-index: 2;
+}
+
+.slider-container .slider-main .slide.right {
+    transform: translateX(80%) scale(0.8);
+    display: inline;
+    z-index: 2;
+}
+
+.slider-container .left-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 10%;
+    border: none;
+    font-size: 30px;
+    color: white;
+
+    background-color: none;
+    background-color: #00000000;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.slider-container .right-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 10%;
+    font-size: 30px;
+    color: white;
+    border: none;
+    background-color: none;
+    background-color: #00000000;
+    z-index: 2;
+    cursor: pointer;
+}
+
+

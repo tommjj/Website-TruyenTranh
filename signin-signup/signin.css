@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: roboto;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    max-width: 320px;
+    width: 320px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form form .signinform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form h3 {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.input {
+    position: relative;
+    width: 280px;
+    height: 50px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.input input {
+    position: absolute;
+    height: 30px;
+    width: 264px;
+    border: 1px solid #333;
+    border-radius: 50vh;
+    z-index: 1;
+    padding-left: 10px;
+    font-size: 16px;
+    bottom: 0;
+
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.input label {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    left: 12px;
+    color: #333;
+
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+
+.input label::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+
+.content-name {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.input input:focus {
+    outline: none;
+    box-shadow: 0 0 7px rgba(0, 0, 255, 0.308);
+}
+
+.input input:focus+.label-name .content-name,
+.input input:valid+.label-name .content-name {
+    transform: translateY(-98%);
+    font-size: 14px;
+    background-color: white;
+    left: 0px;
+    color: #332;
+}
+
+.input input:focus+.label-name::after,
+.input input:valid+.label-name::after {
+    transform: translateX(0%);
+}
+
+.form input[type='submit'] {
+    width: 268px;
+    height: 30px;
+    border: none;
+    border-radius: 50vh;
+    margin-top: 20px;
+    color: white;
+    background: blue;
+}
+
+.form .forget {
+    text-align: right;
+    width: 100%;
+    padding-right: 8px;
+    font-size: 12px;
+}
