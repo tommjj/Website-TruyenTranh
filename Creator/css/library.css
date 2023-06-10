@@ -1,0 +1,160 @@
+.container {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 30px;
+    border-left:  var(--primary-border);
+}
+
+h2 {
+    width: 100%;
+    color: var(--text-color);
+    font-size: 2.0em;
+    padding-left: 8px;
+}
+
+
+.comics {
+    width: 100%;
+    margin-top: 20px;
+    
+    border-collapse: collapse;
+}
+
+.comics tr td {
+    border-bottom:  var(--primary-border);
+    border-top:  var(--primary-border);
+}
+
+.comics tr td {
+    padding-left: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
+
+.comics thead tr td{
+    height: 40px;
+}
+
+.comics thead tr td:first-child {
+    width: 40%;
+    max-width: 400px;
+}
+
+.comics thead tr td:nth-child(2) {
+    width: 110px;
+}
+
+.comics thead tr td:nth-child(3) {
+    width: 90px;
+}
+
+.comics thead tr td:nth-child(4) {
+    width: 80px;
+}
+
+.comics thead tr td:nth-child(5) {
+    width: 80px;
+}
+
+.comics thead tr td:nth-child(6) {
+    width: 80px;
+}
+
+.comics tbody tr td{
+    max-height: 80px;
+}
+
+.comics tr td:nth-child(4) {
+    text-align: right;
+}
+
+.comics tr td:nth-child(5) {
+    text-align: right;
+}
+
+.comics tr td:nth-child(6) {
+    text-align: right;
+}
+
+.comics tr td:nth-child(6)::after {
+    color: #fff;
+   content: "-----";
+   background-color: rgb(255, 255, 255);
+   width: 20px;
+}
+
+.comics tbody tr td .comic {
+    position: relative;
+    height: 80px;
+    display: flex;
+}
+
+.comics tbody tr td .comic .img{
+    height: 80px;
+}
+
+.comics tbody tr td .comic .img img{
+    height: 80px;
+}
+
+.comics tbody tr td .comic .text {
+    margin-left: 8px;
+}
+
+.comics tbody tr td .comic .text a{
+    color: var(--text-color);
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.comics tbody tr td .comic .buttons {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 20px;
+    color: var(--text-color);
+    font-size: 16px;
+    text-decoration: none;
+    z-index: 2;
+}
+
+.comics tbody tr td .comic .buttons a{
+    font-size: 24px;
+    color: var(--text-color);
+    margin: 4px;
+}
+
+.comics tbody tr:hover td .comic .buttons {
+    display: inline;
+}
+
+.comics tfoot tr td {
+    height: 40px;
+}
+
+.comics tfoot {
+    position: relative;
+}
+
+.comics tfoot .buttons {
+    position: absolute;
+    right: 16px;
+    display: flex;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.comics tfoot .buttons a{
+    max-width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 28px;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-right: 10px;
+}

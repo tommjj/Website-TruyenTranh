@@ -102,7 +102,7 @@
 }
 
 .container-account ul li {
-    color: #222222;
+    color: #4e4e4e;
     text-align: center;
     width: 50%;
     margin-top: 10px;
@@ -110,10 +110,11 @@
     font-weight: 500;
     cursor: pointer;
     border-radius: 8px 8px 0 0;
-    transition: .1s;
+    
 }
 
 .container-account ul li.active {
+    color: #222;
     border-bottom: 2px solid #222;
 }
 

@@ -4,10 +4,15 @@
 const navButton = document.getElementById('nav-button');
 const nav = document.getElementById('nav');
 const header = document.getElementById('header');
+const containerMain = document.querySelector('.container');
 
 navButton.onclick = function () {
 
     console.log(window.innerWidth);
+
+    if(window.innerWidth > 1200) {
+        nav.classList.remove('hidden');
+    }
 
     if (window.innerWidth < 600) {
         nav.classList.remove('active');
@@ -22,9 +27,11 @@ navButton.onclick = function () {
                 nav.classList.add('hidden');
                 setTimeout(() => {
                     nav.classList.add('active');
+                   
                 }, 20);
             } else {
                 nav.classList.remove('active');
+                
             }
             return;
         }

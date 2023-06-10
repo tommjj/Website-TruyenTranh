@@ -68,8 +68,10 @@
 }
 
 .info .text .name {
-    font-size: 1.5em;
-    margin-top: 20px;
+    font-size: 2.4em;
+    font-weight: 400;
+    color: #000000;
+    margin-top: 0px;
     width: 100%;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -191,8 +193,8 @@
 .eposide {
     color: var(--text-color);
     height: 100%;
-    max-height: 350px;
-    width: 25%;
+    margin-left: 1%;
+    width: 99%;
     min-width: 200px;
     background-color: #fefefe;
     overflow: hidden;
@@ -215,14 +217,16 @@
 }
 
 .eposide h2 {
-    margin: 0px;
-    margin-top: 18px;
     font-size: 1.5em;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    padding: 0;
 }
 
 .eposide ul {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
     list-style: none;
     width: 100%;
     height: 85%;
@@ -234,19 +238,22 @@
 
 .eposide ul li {
     width: 100%;
-    height: 35px; 
-    margin: 4px;
+    margin: 0px 0.7%;
+    height: 48px; 
     padding-left: 0px;
-    margin-top: 1px;
+    margin-top: 8px;
     font-size: 1em;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    border-bottom: 1px solid rgb(185, 185, 185);
+
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    
 }
 
 .eposide ul li:hover {
-    background-color: rgb(245, 245, 254);
+    background-color: rgb(237, 237, 255);
 }
 
 .eposide ul li a {
@@ -264,8 +271,213 @@
     color: var(--text-color);
     font-size: 1.2em; 
     font-weight: 400;
+    margin-left: 8px;
 }
 
+.comic-page {
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+.comic-page .page-bar {
+    width: 100%;
+    height: 35px;
+}
+
+.comic-page .page-bar ul {
+    display: flex;
+    list-style: none;
+}
+
+.comic-page .page-bar ul li {
+    margin-right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: 800;
+    transition: 0.3s;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.127);
+}
+
+.comic-page .page-bar ul li.active {
+    color: rgb(29, 29, 29);
+    border-bottom: 2px solid black;
+}
+
+.comic-page .page {
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 500px;
+}
+
+.comic-page .page.active {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 500px;
+}
+
+ul {
+    list-style: none;
+}
+
+.container-commants {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.container-commants .commant {
+    width: 100%;
+}
+
+.commant {
+    position: relative;
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.commant .cm-avt, .commant .cm-avt img{
+    height: 38px;
+    border-radius: 38px;
+}
+
+.commant .cm-avt {
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.commant .cm-text {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin-left: 12px;
+    width: 50%;
+    height: 100px;
+    color: var(--text-color);
+}
+
+.commant .cm-text .name {
+    color: #000;
+    width: 100%;
+    margin-top: 6px;
+    height: 1.4em;
+}
+
+.commant .cm-text .name a {
+    color: #000;
+    text-decoration: none;
+}
+
+.commant .comic {
+    color: var(--text-color);
+    width: 35%;
+    height: 100px;
+    border: none;
+    display: flex;
+    align-items: start;
+    text-decoration: none;
+}
+
+.commant .cm-text .bar {
+    color: var(--text-color);
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    z-index: 2;
+}
+
+.commant .cm-text .bar div{
+    margin-right: 18px;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.commant .cm-text .bar .reply {
+    font-weight: 600;
+    color: var(--text-color);
+    color: #646363;
+}
+
+.commant .rep {
+    position: relative;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: inherit;
+    
+
+    height: 0;
+    overflow: hidden;
+}
+
+.commant .rep.active {
+    height: inherit;
+}
+
+.commant .rep form {
+    display: flex;
+    width: 100%;
+    margin-left: 32px;
+    margin-bottom: 8px;
+}
+
+.commant .rep h4 {
+    margin: 32px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+.commant .rep form textarea {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    height: 30px;
+    width: 90%;
+    outline: none;
+    resize: none;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.commant .rep form div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    padding: 0 10px;
+    height: 30px;
+    width: 60px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--search-button-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.commant .rep form div:is(:focus, :hover) {
+    background-color: rgb(11, 11, 255);
+}
+
+.rep-commant {
+    width: 100%;
+    padding-left: 50px;
+}
+
+.rep-commant ul li .commant {
+    border: none;
+    height: 0px;
+    overflow: hidden;
+}
+
+.rep-commant.active ul li .commant { 
+    height: inherit;
+}
 
 @media only screen and (min-width: 1160px) {
     .img {
@@ -273,11 +485,15 @@
     }
 
     .text {
-        width: 48%;
+        width: 77%;
     }
 
-    .eposide {
-        width: 20%;
+    .info .text .name {
+        font-size: 2em;
+    }
+
+    .eposide ul li {
+        width: 31.8%;
     }
 }
 
@@ -287,11 +503,15 @@
     }
 
     .text {
-        width: 40%;
+        width: 67%;
     }
 
-    .eposide {
-        width: 25%;
+    .info .text .name {
+        font-size: 1.8em;
+    }
+
+    .eposide ul li {
+        width: 32%;
     }
 }
 
@@ -301,27 +521,25 @@
     }
 
     .text {
-        width: 60%;
-    }
-
-    .eposide {
-        margin-top: 20px;
-        width: 90%;
+        width: 65%;
     }
 }
 
 @media only screen and (max-width: 900px) {
     .img {
-        width: auto;
+        width: 39%;
     }
 
     .text {
-        width: 50%;
+        width: 57%;
     }
 
-    .eposide {
-        margin-top: 20px;
-        width: 90%;
+    .info .text .name {
+        font-size: 1.6em;
+    }
+
+    .eposide ul li {
+        width: 48%;
     }
 }
 
@@ -332,17 +550,13 @@
     }
 
     .text {
-        width: 50%;
+        width: 57%;
     }
 
-    .eposide {
-        width: 90%;
-        margin-top: 0px;
+    .info .text .name {
+        font-size: 1.6em;
     }
 
-    .container {
-        max-width: 90%;
-    }
 }
 
 @media only screen and (max-width: 650px) {
@@ -359,15 +573,15 @@
         padding-left: 8px;
     }
 
+    .info .text .name {
+        font-size: 1.6em;
+    }
+
     .text .buttons {
         width: 90%;
         display: flex;
         justify-content: center;
         margin-top: 18px;
-    }
-
-    .eposide {
-        width: 90%;
     }
 }
 
@@ -380,6 +594,8 @@
         background-color: #ffffff00;
         z-index: -1;
     }
+
+    
 }
 
 @media only screen and (max-width: 500px) {
@@ -393,12 +609,12 @@
         padding-left: 0px;
     }
 
-    .eposide {
-        width: 90%;
-    }
-
     .back {
         margin-left: 0px;
+    }
+
+    .info .text .name {
+        font-size: 1.4em;
     }
 }
 
@@ -412,13 +628,17 @@
         padding-left: 0px;
     }
 
-    .eposide {
-        width: 90%;
+    .info .text .name {
+        font-size: 1.4em;
     }
 }
 
 @media only screen and (max-width: 345px) {
     .back {
         margin-left: 0px;
+    }
+
+    .eposide ul li {
+        width: 98%;
     }
 }

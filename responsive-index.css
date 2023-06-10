@@ -121,8 +121,8 @@
 
 @media only screen and (max-width: 650px) {
    .item {
-       width: 155px;
-       height: 232px;
+       width: 158px;
+       height: 237px;
        font-size: 16px;
    }
 
@@ -139,7 +139,7 @@
     .item {
         width: 200px;
         height: 300px;
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .container {
@@ -160,15 +160,16 @@
     }
 }
 
-@media only screen and (max-width: 415px) {
+@media only screen and (max-width: 416px) {
     .item {
-        width: 175px;
-        height: 262px;
+        width: 180px;
+        height: 270px;
+        font-size: 18px;
     }
 
     .container {
         max-width: 376px;
-     }
+    }
 
     .search {
         width: 80px;
@@ -186,12 +187,13 @@
 
 @media only screen and (max-width: 376px) {
     .item {
-        width: 175px;
-        height: 262px;
+        width: 172px;
+        height: 258px;
+        font-size: 18px;
     }
 
     .container {
-        max-width: 370px;
+        max-width: 360px;
      }
 
     .search {

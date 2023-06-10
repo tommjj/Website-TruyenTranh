@@ -1,0 +1,186 @@
+.container {
+    width: 100%;
+    margin-left: 38px;
+    max-width: 100%;
+}
+
+.container h2 {
+    margin-top: 18px;
+    font-size: 32px;
+}
+
+ul {
+    list-style: none;
+}
+
+.container-commants {
+    width: 100%;
+}
+
+.container-commants .commant {
+    width: 100%;
+}
+
+.commant {
+    position: relative;
+    
+    border: var(--primary-border);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.commant .img, .commant .img img{
+    height: 38px;
+    border-radius: 38px;
+}
+
+.commant .img {
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.commant .text {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin-left: 12px;
+    width: 50%;
+    height: 100px;
+    color: var(--text-color);
+}
+
+.commant .text .name {
+    color: #000;
+    width: 100%;
+    margin-top: 6px;
+    height: 1.4em;
+}
+
+.commant .text .name a {
+    color: #000;
+    text-decoration: none;
+}
+
+.commant .comic {
+    color: var(--text-color);
+    width: 35%;
+    height: 100px;
+    border: none;
+    display: flex;
+    align-items: start;
+    text-decoration: none;
+}
+
+.commant .text .bar {
+    color: var(--text-color);
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    z-index: 2;
+}
+
+.commant .text .bar div{
+    margin-right: 18px;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.commant .text .bar .reply {
+    font-weight: 600;
+    color: var(--text-color);
+    color: #646363;
+}
+
+.commant .comic .img ,.commant .comic .img img{
+    height: 100%;
+    border-radius: 0px;
+    margin: 0px;
+}
+
+.commant .comic .name {
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.commant .rep {
+    position: relative;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: inherit;
+    
+
+    height: 0;
+    overflow: hidden;
+}
+
+.commant .rep.active {
+    height: inherit;
+    border-top: var(--primary-border);
+    border-bottom: var(--primary-border);
+}
+
+.commant .rep form {
+    display: flex;
+    width: 100%;
+    margin-left: 32px;
+    margin-bottom: 8px;
+}
+
+.commant .rep h4 {
+    margin: 32px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+.commant .rep form textarea {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    height: 4em;
+    width: 65%;
+    outline: none;
+    border: var(--primary-border);
+    resize: none;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.commant .rep form div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+    padding: 0 10px;
+    height: 30px;
+    width: 60px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--search-button-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.commant .rep form div:is(:focus, :hover) {
+    background-color: rgb(11, 11, 255);
+}
+
+.rep-commant {
+    width: 100%;
+    padding-left: 50px;
+}
+
+.rep-commant ul li .commant {
+    border: none;
+    height: 0px;
+    overflow: hidden;
+}
+
+.rep-commant.active ul li .commant {
+    border-top: var(--primary-border);
+    height: inherit;
+}
+

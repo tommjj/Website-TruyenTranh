@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    margin-left: 38px;
+    max-width: 100%;
+}
+
+.container h2 {
+    margin-top: 18px;
+    font-size: 32px;
+}
+
+ul {
+    list-style: none;
+}

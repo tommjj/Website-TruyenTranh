@@ -1,58 +1,52 @@
- @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
- :root {
-     --body-color: #ffffff;
-     --sidebar-color: #FFF;
-     --primary-color: #695CFE;
-     --primary-color-light: #F6F5FF;
-     --toggle-color: #DDD;
-     --text-color: #424242;
-     --header-color: #ffffff;
-     --nav-color: #ffffff;
-     --nav-font-color: #f5f0f0;
-     --hover-overlay: rgba(5, 71, 203, 0.2);
+:root {
+    --body-color: #ffffff;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #424242;
+    --header-color: #ffffff;
+    --nav-color: #ffffff;
+    --nav-font-color: #f5f0f0;
+    --hover-overlay: rgba(5, 71, 203, 0.2);
     --header-height: 60px;
-     --account--br-color: rgba(5, 71, 203, 0.2);
-     --account--br-color--hover: rgba(5, 71, 203, 0.5);
+    --account--br-color: rgba(5, 71, 203, 0.2);
+    --account--br-color--hover: rgba(5, 71, 203, 0.5);
+    --search-button-color: rgb(43, 57, 250);
+    --br-item-color: rgb(255, 255, 255);
+    --item-color: #000;
+    --primary-border: 1px solid rgb(190, 190, 190);
 
-     --search-button-color: rgb(43, 57, 250);
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
 
-     --br-item-color: rgb(255, 255, 255);
-     --item-color: #000;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-
-     --tran-02: all 0.2s ease;
-     --tran-03: all 0.3s ease;
-     --tran-04: all 0.4s ease;
-     --tran-05: all 0.5s ease;
- }
-
- * {
-     padding: 0;
-     margin: 0;
-     box-sizing: border-box;
- }
-
- body {
-     font-family: roboto;
-     height: 100vh;
-     background: var(--body-color);
- }
-
- main {
+body {
     position: relative;
-    top:  var(--header-height);
+    font-family: roboto;
+    height: 100vh;
+    background: var(--body-color);
+}
+
+main {
+    position: relative;
+    top: var(--header-height);
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     background-color: rgb(252, 252, 252);
 }
 
- /* =====Resuable===== */
-
-
- /* ----==== main ====----- */
-
- 
-
- 
+/* =====Resuable===== */
+/* ----==== main ====----- */
