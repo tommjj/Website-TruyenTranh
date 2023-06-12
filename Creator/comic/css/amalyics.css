@@ -1,0 +1,32 @@
+.container {
+    width: 100%;
+}
+
+.container h2 {
+    margin-top: 18px;
+    font-size: 32px;
+}
+
+.card {
+    position: relative;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 18px;
+    width: 100%;
+    height: 450px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid #999;
+    overflow: hidden;
+}
+
+.card .title {
+    color: #111;
+    font-size: 32px;
+}
+
+.card .view {
+    color: #222;
+    font-weight: 600;
+    font-size: 120px;
+}
+

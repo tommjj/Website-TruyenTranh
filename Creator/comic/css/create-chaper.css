@@ -1,0 +1,121 @@
+.create-comic {
+    display: block;
+}
+
+.create-comic .contaner-page {
+    margin-top: 14px;
+}
+
+.create-comic .contaner-page .page-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    border-bottom: none;
+}
+
+.create-comic .contaner-page .page-bar ul li {
+    border: none;
+    border-bottom: none;
+    border: var(--primary-border);
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    border-radius: 100px;
+ 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: none;
+}
+
+.create-comic .contaner-page .page-bar ul li:not(:last-child) {
+    margin-right: 80px;
+}
+
+.create-comic .contaner-page .page-bar ul li.active {
+    border: 2px solid var(--search-button-color)
+}
+
+.create-comic {
+    position: fixed;
+    width: 960px;
+    height: 615px;
+    border-radius: 8px;
+    box-shadow: 50px 50px 150px rgba(0, 0, 0, 0.41);
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: #fff;
+}
+
+.create-comic .buttons .cancel {
+    font-size: 32px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    color: var(--text-color);
+    font-weight: 100;
+}
+
+.create-comic .form-create {
+    margin-left: 10px;
+}
+
+.create-comic .form-create .change-avt input {
+    margin-top: 50px;
+}
+
+.create-comic .buttons-ctrl {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    cursor: pointer;
+}
+
+.create-comic .buttons-ctrl div {
+    padding: 8px 10px;
+    margin: 8px;
+    border-radius: 8px;
+}
+
+.create-comic .buttons-ctrl .button-submit,.create-comic .buttons-ctrl .button-next {
+    background-color: var(--search-button-color);
+    color: white;
+}
+
+.create-comic .form-create .page .change-info input {
+    width: 938px;
+}
+
+.create-comic .form-create .page .change-info textarea {
+    width: 938px;
+    height: 300px;
+}
+
+.create-comic .tags {
+    margin-top: 20px;
+    width: 938px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.create-comic .tags li {
+    margin: 2px;
+    border: var(--primary-border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+
+.create-comic .tags li.active {
+    border: 1px solid var(--search-button-color);
+    color: #fff;
+    background-color: var(--search-button-color);
+}
+
+
+

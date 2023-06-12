@@ -419,21 +419,21 @@ ul {
     height: inherit;
 }
 
-.commant .rep form {
+.rep form {
     display: flex;
     width: 100%;
-    margin-left: 32px;
+    margin-left: 0px;
     margin-bottom: 8px;
 }
 
-.commant .rep h4 {
-    margin: 32px;
+.rep h4 {
+    margin: 0px;
     margin-top: 8px;
     margin-bottom: 4px;
     width: 100%;
 }
 
-.commant .rep form textarea {
+.rep form textarea {
     position: relative;
     display: inline-block;
     font-size: 1rem;
@@ -445,7 +445,7 @@ ul {
     border-radius: 4px;
 }
 
-.commant .rep form div {
+.rep form div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -460,7 +460,7 @@ ul {
     cursor: pointer;
 }
 
-.commant .rep form div:is(:focus, :hover) {
+.rep form div:is(:focus, :hover) {
     background-color: rgb(11, 11, 255);
 }
 

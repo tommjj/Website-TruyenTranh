@@ -6,7 +6,8 @@
 
 .contaner-page .page-bar {
     width: 100%;
-    height: 35px;
+    height: 48px;
+    border-bottom: var(--primary-border);
 }
 
 .contaner-page .page-bar ul {
@@ -15,17 +16,21 @@
 }
 
 .contaner-page .page-bar ul li {
-    margin-right: 20px;
+    margin-right: 0;
+    padding: 8px 10px;
+    margin-right: 8px;
     font-size: 1.5rem;
     cursor: pointer;
-    font-weight: 800;
+    font-weight: 600;
     transition: 0.3s;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.127);
+    /* border-bottom: 2px solid rgba(0, 0, 0, 0.127); */
+    
 }
 
 .contaner-page .page-bar ul li.active {
-    color: rgb(29, 29, 29);
-    border-bottom: 2px solid black;
+    color: var(--search-button-color);
+    border-bottom: 3px solid var(--search-button-color);
+    background-color: #fff;
 }
 
 .contaner-page .page {

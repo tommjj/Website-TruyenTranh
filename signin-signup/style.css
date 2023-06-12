@@ -1,0 +1,233 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: roboto;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #ffffff;
+    transition: .5s; 
+}
+
+.container {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+
+    
+}
+
+.orangeBG {
+    position: absolute;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, .15);
+}
+
+.orangeBG .box {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-box {
+    position: absolute;
+    background: #fff;
+    height: 100%;
+    width: 50%;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 45px rgba(0, 0, 0, .25);
+    transition: ease-in-out .5s;
+    overflow: hidden;
+}
+
+.form-box.active {
+    left: 50%;
+}
+
+.box h2 {
+    color: #3a3a3a;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+}
+
+.box button {
+    padding: 10px 20px;
+    background: #fff;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.form-box .form {
+    position: absolute;   
+    width: 80%;
+    transition: .5s;
+    padding: 10px; 
+    margin: 25px;
+}
+
+.form-box .signinform {
+    transition-delay: 0.2s;
+}
+
+.form-box.active .signinform {
+    left: -100%;
+    transition-delay: 0s;
+}
+
+.form-box .signupform {
+    left: 100%;
+    transition-delay: 0s;
+}
+
+.form-box.active .signupform {
+    left: 4%;
+    transition-delay: 0.2s;
+}
+
+
+.form-box .form form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    
+}
+
+.form-box .form input[type="submit"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    border-radius: 40px;
+    border: 1px solid #333;
+}
+
+.form-box .form h3 {
+    text-align: center;
+    font-size: 2.4em;
+    margin-bottom: 40px;
+    font-weight: 600;
+
+}
+
+.form-box .form input[type="submit"] {
+    background: var(--search-button-color);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form-box .form input[value="Sign up"] {
+    background: var(--search-button-color);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+a {
+    color: #333;
+    font-size: 14px;
+}
+
+.input {
+    position: relative;
+    height: 55px;
+    margin-top: 5px;
+}
+
+.input input {
+    position: absolute;
+    height: 38px;
+    width: 100%;
+    border: 1px solid #333;
+    border-radius: 18px;
+    z-index: 1;
+    padding-left: 10px;
+    font-size: 16px;
+    bottom: 0;
+    margin-bottom: 8px;
+}
+
+.input label {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    left: 12px;
+    color: #333;
+
+    margin-left: px;
+    margin-right: 0px;
+    margin-bottom: 8px;
+}
+
+
+.input label::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+
+.content-name {
+    position: absolute;
+    font-size: 16px;
+    margin-bottom: 5px;
+    bottom: 0px;
+    left: 0px;
+    padding-bottom: 4px;
+    transition: all 0.3s ease;
+}
+
+.input input:focus {
+    outline: none;
+    box-shadow: 0 0 7px rgba(0, 0, 255, 0.308);
+}
+
+.input input:focus+.label-name .content-name,
+.input input:valid+.label-name .content-name {
+    transform: translateY(-120%);
+    font-size: 14px;
+    background-color: white;
+    left: 0px;
+    color: #332;
+}
+
+.input input:focus+.label-name::after,
+.input input:valid+.label-name::after {
+    transform: translateX(0%);
+}

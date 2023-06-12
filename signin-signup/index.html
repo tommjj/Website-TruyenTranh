@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="orangeBG">
+            <div class="box signin">
+                <h2>Already Have An Account?</h2>
+                <button class="signinbtn">Sign in</button>
+            </div>
+
+            <div class="box signup">
+                <h2>Create An Account?</h2>
+                <button class="signupbtn">Register</button>
+            </div>
+
+
+        </div>
+
+        <div class="form-box">
+            <div class="form signinform">
+                <form action="" method="post">
+                    <h3>Sign In</h3>
+                    <div class="input">
+                        <input type="text" name="text" autocomplete="off" required />
+                        <label for="text" class="label-name">
+                            <span class="content-name">
+                                Username
+                            </span>
+                        </label>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="text" autocomplete="off" required />
+                        <label for="password" class="label-name">
+                            <span class="content-name">
+                                password
+                            </span>
+                        </label>
+                    </div>
+                    <input type="submit" value="Sign in">
+                    <a href="#">Forget Password</a>
+                </form>
+            </div>
+
+            <div class="form signupform">
+                <form action="" method="post">
+                    <h3>Sign Up</h3>
+                    <div class="input">
+                        <input type="text" name="text" autocomplete="off" required />
+                        <label for="text" class="label-name">
+                            <span class="content-name">
+                                Username
+                            </span>
+                        </label>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="text" autocomplete="off" required />
+                        <label for="text" class="label-name">
+                            <span class="content-name">
+                                Email
+                            </span>
+                        </label>
+                    </div>
+                    <div class="input">
+                        <input type="password" name="text" autocomplete="off" required />
+                        <label for="text" class="label-name">
+                            <span class="content-name">
+                                password
+                            </span>
+                        </label>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="text" autocomplete="off" required />
+                        <label for="text" class="label-name">
+                            <span class="content-name">
+                                confirm
+                            </span>
+                        </label>
+                    </div>
+                    <input type="submit" value="Sign up">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- js -->
+    <script>
+        
+        const signinbtn = document.querySelector('.signinbtn')
+        const signupbtn = document.querySelector('.signupbtn')
+        const formbox = document.querySelector('.form-box')
+        const body = document.querySelector('.body')
+
+        signupbtn.onclick = function () {
+            formbox.classList.add('active')
+            body.classList.add('active')
+        }
+        signinbtn.onclick = function () {
+            formbox.classList.remove('active')
+            body.classList.remove('active')
+        }
+    </script>
+
+</body>
+
+</html>

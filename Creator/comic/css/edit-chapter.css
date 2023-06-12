@@ -1,0 +1,194 @@
+html {
+    scroll-behavior: smooth;
+  }
+
+.container {
+    width: 100%;
+    margin-left: 38px;
+    max-width: 100%;
+    color: var(--text-color);
+}
+
+.container h2 {
+    margin-top: 18px;
+    font-size: 32px;
+    color: #111;
+}
+
+ul {
+    list-style: none;
+}
+
+.head-bar {
+    position: relative;
+    display: flex;
+    
+    width: 100%;
+    height: 50px;
+    border-bottom: var(--primary-border);
+}
+
+.head-bar div:first-child{
+    display: flex;
+    align-items: center;
+}
+
+.head-bar div:first-child button{
+    border: none;
+    background-color: #fff;
+    font-size: 34px;
+    display: flex;
+    align-items: center;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 0px;
+    right: 24px;
+    margin-bottom: 3px;
+    
+}
+
+.buttons button {
+    padding: 12px 24px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.buttons .save:hover {
+    background-color: var(--button-honver-color);
+}
+
+.buttons .save {
+    background-color: var(--search-button-color);
+    color: #fff;
+    border-radius: 25px;
+}
+
+.buttons .cancel {
+    background-color: #fff;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.page-chapter-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-chapter-container .page-chapter {
+    max-width: 600px;
+    width: 95%;
+    display: flex;
+    padding: 10px;
+    border-radius: 8px;
+    border: var(--primary-border);
+    margin-top: 8px;
+    box-shadow: 0 0 8px rgba(57, 2, 255, 0.4);
+    transition: 0.3s;
+}
+
+.page-chapter-container .page-chapter img {
+    width: calc(100% - 50px);
+    border-radius: 8px;
+}
+
+.page-chapter-container .page-chapter .page-bar {
+    width: 50px;
+    align-content: center
+}
+
+.page-chapter-container .page-chapter .page-bar .page-ctrl{
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 4px;
+}
+
+.page-chapter-container .page-chapter .page-bar .page-ctrl div{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: var(--primary-border); */
+    border-radius: 40px;
+    margin-bottom: 8px;
+    font-size: 34px;
+    cursor: pointer;
+}
+
+.page-chapter-container .page-chapter .page-bar .page-ctrl div:hover{
+    color: var(--search-button-color);
+}
+
+.page-chapter-container .page-chapter .page-bar .page-ctrl p {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.page-chapter-container .page-chapter .page-bar button {
+    border: none;
+    background-color: #fff;
+    color: var(--text-color);
+    font-size: 20px;
+    margin-top: 18px;
+    cursor: pointer;
+}
+
+.page-chapter-container .page-chapter .page-bar button:hover {
+    color: red;
+}
+
+.page-chapter-container .page-chapter .page-bar .add:hover {
+    color: var(--search-button-color);
+}
+
+input[type=file] {
+    width: 100px;
+}
+
+input[type=file]::file-selector-button {
+    width: 100px;
+    margin-right: 20px;
+    border: none;
+    background: var(--search-button-color);
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: var(--tran-03);
+}
+  
+input[type=file]::file-selector-button:hover {
+    background: var(--button-honver-color);
+}
+
+.add-page {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    max-width: 600px;
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    border: var(--primary-border);
+    margin: auto;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.add-page p {
+    margin-bottom: 10px;
+    margin-bottom: 8px;
+}
+

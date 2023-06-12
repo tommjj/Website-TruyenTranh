@@ -10,7 +10,7 @@ navButton.onclick = function () {
 
     console.log(window.innerWidth);
 
-    if(window.innerWidth > 1200) {
+    if(window.innerWidth > 600) {
         nav.classList.remove('hidden');
     }
 

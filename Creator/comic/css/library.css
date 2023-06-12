@@ -1,0 +1,162 @@
+.container {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 30px;
+    border-left:  var(--primary-border);
+}
+
+h2 {
+    margin-top: 10px;
+    width: 100%;
+    color: var(--text-color);
+    font-size: 2.0em;
+    padding-left: 8px;
+}
+
+
+.chapters {
+    width: 100%;
+    margin-top: 20px;
+    
+    border-collapse: collapse;
+}
+
+.chapters tr td {
+    border-bottom:  var(--primary-border);
+    border-top:  var(--primary-border);
+}
+
+.chapters tr td {
+    padding-left: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
+
+.chapters thead tr td{
+    height: 40px;
+}
+
+.chapters thead tr td:first-child {
+    width: 30px;
+}
+
+.chapters thead tr td:nth-child(2) {
+    
+    width: 40%;
+    max-width: 400px;
+}
+
+.chapters thead tr td:nth-child(3) {
+    width: 90px;
+}
+
+.chapters thead tr td:nth-child(4) {
+    width: 80px;
+}
+
+.chapters thead tr td:nth-child(5) {
+    width: 80px;
+}
+
+.chapters thead tr td:nth-child(6) {
+    width: 80px;
+}
+
+.chapters tbody tr td{
+    max-height: 80px;
+}
+
+.chapters tr td:nth-child(4) {
+    text-align: right;
+}
+
+.chapters tr td:nth-child(5) {
+    text-align: right;
+}
+
+.chapters tr td:nth-child(6) {
+    text-align: right;
+}
+
+.chapters tr td:nth-child(6)::after {
+    color: #fff;
+   content: "-----";
+   background-color: rgb(255, 255, 255);
+   width: 20px;
+}
+
+.chapters tbody tr td .chapter {
+    position: relative;
+    padding: 8px 0;
+    display: flex;
+}
+
+.chapters tbody tr td .chapter .img{
+    height: 80px;
+}
+
+.chapters tbody tr td .chapter .img img{
+    height: 80px;
+}
+
+.chapters tbody tr td .chapter .text {
+    margin-left: 8px;
+}
+
+.chapters tbody tr td .chapter .text a{
+    color: var(--text-color);
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.chapters tbody tr td .chapter .buttons {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 20px;
+    color: var(--text-color);
+    font-size: 16px;
+    text-decoration: none;
+    z-index: 2;
+}
+
+.chapters tbody tr td .chapter .buttons a{
+    font-size: 24px;
+    color: var(--text-color);
+    margin: 4px;
+}
+
+.chapters tbody tr:hover td .chapter .buttons {
+    display: inline;
+}
+
+.chapters tfoot tr td {
+    height: 40px;
+}
+
+.chapters tfoot {
+    position: relative;
+}
+
+.chapters tfoot .buttons {
+    position: absolute;
+    right: 16px;
+    display: flex;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.chapters tfoot .buttons a{
+    max-width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 28px;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-right: 10px;
+}

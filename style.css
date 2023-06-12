@@ -15,6 +15,7 @@
     --account--br-color: rgba(5, 71, 203, 0.2);
     --account--br-color--hover: rgba(5, 71, 203, 0.5);
     --search-button-color: rgb(43, 57, 250);
+    --button-honver-color: #0d45a5;
     --br-item-color: rgb(255, 255, 255);
     --item-color: #000;
     --primary-border: 1px solid rgb(190, 190, 190);
@@ -50,3 +51,7 @@ main {
 
 /* =====Resuable===== */
 /* ----==== main ====----- */
+
+.p-relative {
+    position: relative;
+}

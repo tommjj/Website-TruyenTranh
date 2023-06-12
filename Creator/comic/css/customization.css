@@ -1,5 +1,4 @@
 
-
 .container {
     width: 100%;
     margin-left: 38px;
@@ -35,15 +34,14 @@ h3 {
     flex-wrap: wrap;
     width: 100%;
     max-width: 300px;
-    min-height: 200px;
+    height: auto;
     align-items: center;
     justify-content: center;
 }
 
 .change-avt .avt-image img {
-    width: 160px;
-    max-height: 160px;
-    border-radius: 160px;
+    width: 90%;
+    max-height: auto;
 }
 
 .text {
