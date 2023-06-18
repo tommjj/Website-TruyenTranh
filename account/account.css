@@ -1,6 +1,6 @@
 .container {
-    width: 100%;
-    justify-content: center;
+    width: 97%;
+    margin-left: 28px;
     align-items: center;
     flex-direction: column;
 }
@@ -75,47 +75,37 @@
     transform: translateY(50%);
     padding: 5px;
     border-radius: 50px;
-    border: none;
+    border: 1px solid var(--search-button-color);
     color: #fff;
     background-color: var(--search-button-color);
-}
-
-.container-account {
-    width: 100%;
-    position: relative;
-}
-
-.page-bar {
-    position: sticky;
-    top: 50px;
-    background-color: var(--body-color);
-    z-index: 10;
-}
-
-.container-account ul {
-    width: 100%;
-    display: flex;
-    list-style: none;
-    justify-content: space-around;
-    font-size: 1.5em;
-    margin-bottom: 5px;
-}
-
-.container-account ul li {
-    color: #4e4e4e;
-    text-align: center;
-    width: 50%;
-    margin-top: 10px;
-    /* border: 1px solid black; */
-    font-weight: 500;
     cursor: pointer;
-    border-radius: 8px 8px 0 0;
-    
 }
 
-.container-account ul li.active {
-    color: #222;
-    border-bottom: 2px solid #222;
+.info-user .main .follow:hover {
+    background-color: var(--button-honver-color);
+}
+
+.info-user .main .followed {
+    position: absolute;
+    right: 5%;
+    padding: 4px;
+    width: 100px;
+    bottom: 50%;
+    transform: translateY(50%);
+    padding: 5px;
+    border-radius: 50px;
+    border: var(--primary-border);
+    color: var(--text-color);
+    background-color: white;
+    cursor: pointer;
+}
+
+.info-user .main .followed:hover {
+    background-color: rgb(227, 227, 227);
+}
+
+.info-user .main .followed::after {
+    content: 'ed';
 }
 
 .items {
@@ -130,26 +120,16 @@
 
 .about {
     margin-top: 8px;
+    padding-top: 8px;
+    padding: 8px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
-.page {
-    position: absolute;
-    width: 100%;
-    background-color: var(--body-color);
-    display: none;
-    z-index: 5;
+.contaner-page {
+    max-width: 900px;
 }
-
-.page.active {
-    position: relative;
-    display: inline;
-    z-index: 6;
-}
-
-
 
 @media only screen and (min-width: 1000px) {
     .info-user {
@@ -184,14 +164,27 @@
         padding: 4px;
         width: 80px;
         border-radius: 50px;
-        border: none;
         color: #fff;
         background-color: var(--search-button-color);
     }
+
+    .info-user .main .followed {
+        margin-top: 8px;
+        position: relative;
+        display: inline;
+        transform: translateY(0);
+        margin-left: 8px;
+        padding: 4px;
+        width: 80px;
+        border-radius: 50px;
+    }
 }
 
-@media only screen and (max-width: 450px) {
-    
+@media only screen and (max-width: 550px) {
+    .container {
+        width: 100%;
+        margin-left: 0px;
+    }
 }
 
 @media only screen and (max-width: 400px) {

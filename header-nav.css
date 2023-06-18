@@ -305,6 +305,9 @@ header.hidden {
     overflow: hidden;
     display: flex;
     align-items: center;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .nav ul li a i {
@@ -320,6 +323,90 @@ header.hidden {
 
 .nav ul li a:hover i {
     margin-right: 17px;
+}
+
+.nav ul li a img {
+    height: 100%;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 4px;
+    transition: 0.3s;
+}
+
+.nav.active ul li a img {
+    height: 60%;
+}
+
+.nav.active:hover ul li a img {
+    height: 100%;
+}
+
+.nav ul li a:hover img {
+    height: 100%;
+    margin-right: 17px;
+    margin-left: 4px;
+}
+
+.nav h4 {
+    color: var(--text-color);
+    margin-left: 4px;
+    overflow: hidden;
+    transition: var(--tran-04);
+}
+
+.nav.active h4 {
+    border: var(--primary-border);
+    height: 1px;
+    margin-left: 0px;
+}
+
+.nav.active:hover h4 {
+    border: none;
+    height: inherit;
+    margin-left: 4px;
+}
+
+.nav .show-followed {
+    position: relative;
+    max-height: 180px;
+    overflow: hidden;
+}
+
+.nav .show-followed.active {
+    max-height: inherit;
+}
+
+.nav ul .show-more-followed a i{
+    font-size: 18px;
+}
+
+
+.nav ul .show-more-followed {
+    width: 100%;
+}
+
+.nav ul .show-more-followed a {
+    width: 90%;
+}
+
+.nav .show-followed .show-more-followed{
+    background-color: var(--nav-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.nav .show-followed.active .show-more-followed{
+    position: relative;
+}
+
+.nav ul .show-more-followed a:after {
+    content: 'Hiển thị thêm';
+}
+
+.nav ul .show-more-followed.active a:after {
+    content: 'Ẩn bớt';
 }
 
 .nav .user {
@@ -437,7 +524,110 @@ header.hidden {
     display: none;
 }
 
-@media only screen and (min-width: 600px) {
+.account-op {
+    width: 180px;
+    position: absolute;
+    border: var(--primary-border);
+    top:100%;
+    right: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    display: none;
+}
+
+.account-op ul {
+    list-style: none;
+}
+
+.account-op ul li i{
+    margin-right: 8px;
+    margin-left: 4px;
+    transition: 0.3s;
+}
+
+.account-op ul li  {
+    color: var(--text-color);
+    width: 90%;
+    height: 35px;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 8px 8px 8px 0px;
+    padding: 3px;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.account-op ul li {
+    font-size: 16px;
+    margin-right: 10px;
+    margin-left: 4px;  
+}
+
+.account-op ul li a{
+    text-decoration: none;
+    color: var(--text-color);
+    transition: 0.3s;
+}
+
+.account-op ul li:hover {
+    background-color: var(--hover-overlay);
+}
+
+.account-op ul li:hover i {
+    margin-right: 17px;
+}
+
+.account-op.active {
+    display: block;
+}
+
+.signin-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 80px;
+    height: 55%;
+    color: white;
+    background-color: var(--search-button-color);
+    border-radius: 6px;
+    font-size: 0.8em;
+}
+
+.search-suggestions {
+    background-color: #fff;
+    border: var(--primary-border);
+    color: var(--text-color);
+    position: absolute;
+    left: 0;
+    top: 85%;
+    width: 100%;
+    border-radius: 6px;
+    display: none;
+}
+
+.search-suggestions.active {
+    display: inline;
+}
+
+.search-suggestions ul{
+    list-style: none;
+    width: 100%;
+}
+
+.search-suggestions ul li {
+    margin: 2px 0;
+    padding: 6px;
+    padding-left: 16px;
+}
+
+.search-suggestions ul li:hover {
+    background-color: var(--hover-overlay);
+}
+
+@media only screen and (min-width: 800px) {
     body {
         display: flex;
     }

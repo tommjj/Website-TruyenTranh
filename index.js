@@ -10,7 +10,7 @@ navButton.onclick = function () {
 
     console.log(window.innerWidth);
 
-    if(window.innerWidth > 600) {
+    if (window.innerWidth > 600) {
         nav.classList.remove('hidden');
     }
 
@@ -27,11 +27,11 @@ navButton.onclick = function () {
                 nav.classList.add('hidden');
                 setTimeout(() => {
                     nav.classList.add('active');
-                   
+
                 }, 20);
             } else {
                 nav.classList.remove('active');
-                
+
             }
             return;
         }
@@ -93,4 +93,115 @@ document.addEventListener('scroll', scrollContainer);
 // setTimeout(() => {
 //     document.getElementById('head').innerHTML += '<link rel="stylesheet" href="test.css">';
 // }, 5000);
+
+const account = document.querySelector('header div.account');
+
+account.onclick = () => {
+    document.querySelector('header div.account .account-op').classList.toggle('active');
+}
+
+document.querySelector('#log-out').onclick = () => {
+
+    $.ajax({
+        type: 'POST',
+        url: window.location.protocol + '//' + window.location.hostname + '/WEBTruynTranh/methodPhp/log-out.php',
+        data: '',
+        success: function (data) {
+            if (data == 'true') {
+                window.location = window.location.protocol + '//' + window.location.hostname + '/WEBTruynTranh/signin-signup/index.html';
+            }
+        }
+    });
+};
+
+//show more followed
+
+const followedContainer = document.querySelector('.nav .show-followed');
+const showMoreFollowed = document.querySelector('.nav .show-followed .show-more-followed')
+
+
+if (!(showMoreFollowed == null)) {
+    showMoreFollowed.onclick = (e) => {
+        showMoreFollowed.classList.toggle('active');
+        showMoreFollowed.children[0].children[0].classList.toggle('bx-flip-vertical');
+        followedContainer.classList.toggle('active');
+    }
+}
+
+//search-suggestions
+
+const searchSuggestions = document.querySelector('.search-suggestions');
+const searchBarIndex = document.querySelector('.search input[type="text"]');
+
+// searchBarIndex.onfocus = function () {
+//     searchSuggestions.classList.add('active');
+// }
+
+searchBarIndex.onblur = function () {
+
+    setTimeout(() => {
+        searchSuggestions.classList.remove('active');
+    }, 250);
+}
+
+searchSuggestions.addEventListener('click', (e) => {
+    if (e.target.tagName == 'LI') {
+        searchBarIndex.value = e.target.innerHTML;
+    }
+
+    searchBarIndex.focus();
+});
+
+searchBarIndex.oninput = function () {
+
+    if(searchBarIndex.value == '') {
+        searchSuggestions.children[0].innerHTML = '';
+        searchSuggestions.classList.remove('active');
+        return;
+    }
+
+    var tags = [];
+
+    for(let i = 0; i < searchBarIndex.parentElement.childElementCount; i++) {
+        
+        if(searchBarIndex.parentElement.children[i].name == 'tags[]') {
+            tags.push(searchBarIndex.parentElement.children[i].value); 
+        }
+    }
+
+    console.log(tags);
+    
+    var data = {
+        search: searchBarIndex.value,
+        like: 2,
+        tags: tags,
+        json: true
+    }
+
+    $.ajax({
+        type: 'GET',
+        url: 'methodPhp/search.php',
+        data:  data ,
+        cache: false,
+        success: function (data) {
+            if(data != '') {
+                searchSuggestions.classList.add('active');
+                searchSuggestions.children[0].innerHTML = '';
+
+                data = JSON.parse(data);
+
+                for(var i in data) {
+                    let it = document.createElement('LI');
+                    it.innerHTML = data[i]['TenTruyen'];
+                    searchSuggestions.children[0].appendChild(it);
+                }
+            } else {
+                searchSuggestions.children[0].innerHTML = '';
+                searchSuggestions.classList.remove('active');
+            } 
+        }
+    });
+}
+
+
 

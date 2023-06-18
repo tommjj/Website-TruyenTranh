@@ -55,3 +55,7 @@ main {
 .p-relative {
     position: relative;
 }
+
+.display-none {
+    display: none;
+}

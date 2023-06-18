@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,10 +28,13 @@
 
         <div class="form-box">
             <div class="form signinform">
-                <form action="" method="post">
+                <form action="" method="" class="signin-form" enctype="multipart/form-data">
                     <h3>Sign In</h3>
+                    <div class="error-signin">
+                        
+                    </div>
                     <div class="input">
-                        <input type="text" name="text" autocomplete="off" required />
+                        <input oninput="clearError()" type="text" name="username" autocomplete="off" required />
                         <label for="text" class="label-name">
                             <span class="content-name">
                                 Username
@@ -38,7 +42,7 @@
                         </label>
                     </div>
                     <div class="input">
-                        <input type="text" name="text" autocomplete="off" required />
+                        <input oninput="clearError()" type="password" name="password" autocomplete="off" required />
                         <label for="password" class="label-name">
                             <span class="content-name">
                                 password
@@ -48,13 +52,17 @@
                     <input type="submit" value="Sign in">
                     <a href="#">Forget Password</a>
                 </form>
+                
             </div>
 
             <div class="form signupform">
-                <form action="" method="post">
+                <form action="" method="post" class="signup-form">
                     <h3>Sign Up</h3>
+                    <div class="error-signup">
+                     
+                    </div>
                     <div class="input">
-                        <input type="text" name="text" autocomplete="off" required />
+                        <input oninput="clearError()" type="text" name="username" autocomplete="off" required />
                         <label for="text" class="label-name">
                             <span class="content-name">
                                 Username
@@ -62,7 +70,7 @@
                         </label>
                     </div>
                     <div class="input">
-                        <input type="text" name="text" autocomplete="off" required />
+                        <input oninput="clearError()" type="text" name="email" autocomplete="off" required />
                         <label for="text" class="label-name">
                             <span class="content-name">
                                 Email
@@ -70,15 +78,18 @@
                         </label>
                     </div>
                     <div class="input">
-                        <input type="password" name="text" autocomplete="off" required />
+                        <input oninput="clearError()" type="password" name="password" autocomplete="off" required />
                         <label for="text" class="label-name">
                             <span class="content-name">
                                 password
                             </span>
+            
                         </label>
                     </div>
+                    <div>
+                    </div>
                     <div class="input">
-                        <input type="text" name="text" autocomplete="off" required />
+                        <input  oninput="clearError()" type="password" name="confirm" autocomplete="off" required />
                         <label for="text" class="label-name">
                             <span class="content-name">
                                 confirm
@@ -92,22 +103,10 @@
     </div>
 
     <!-- js -->
-    <script>
-        
-        const signinbtn = document.querySelector('.signinbtn')
-        const signupbtn = document.querySelector('.signupbtn')
-        const formbox = document.querySelector('.form-box')
-        const body = document.querySelector('.body')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+   
 
-        signupbtn.onclick = function () {
-            formbox.classList.add('active')
-            body.classList.add('active')
-        }
-        signinbtn.onclick = function () {
-            formbox.classList.remove('active')
-            body.classList.remove('active')
-        }
-    </script>
+    <script src="index.js"></script>
 
 </body>
 
