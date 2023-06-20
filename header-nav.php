@@ -162,7 +162,7 @@ if (isset($userID)) {
     <div>
         <ul>
             <li><a href="<?php echo getServertPageURL() . "/WEBTruynTranh/" ?>"><i class='bx bx-home-alt'></i>Trang chủ </a></li>
-            <li><a href=""><i class='bx bx-book-content'></i>Truyện đã lưu</a></li>
+            <li><a href="<?php echo getServertPageURL() . "/WEBTruynTranh/feed/save" ?>"><i class='bx bx-book-content'></i>Truyện đã lưu</a></li>
             <li><a href=""><i class='bx bx-book-reader' ></i></i>Đã theo dõi</a></li>
             <li><a href=""><i class='bx bx-bookmark-alt'></i></i>Lịch sử</a></li>
             <li><a href=""><i class='bx bx-like'></i>Đã thích</a></li>
@@ -177,7 +177,7 @@ if (isset($userID)) {
                 echo "<ul class=\"show-followed\">";
 
                 foreach ($followedArr as $item) {
-                    echo "<li><a href=\"" . getServertPageURL() . "/WEBTruynTranh/account/account.php?id=" . $item['id'] . "\"><img src=\"" . getPathImg($item['AnhDD']) . "\" alt=\"\">" . $item['Ten'] . "</a></li>";
+                    echo "<li><a href=\"" . getServertPageURL() . "/WEBTruynTranh/account/?id=" . $item['id'] . "\"><img src=\"" . getPathImg($item['AnhDD']) . "\" alt=\"\">" . $item['Ten'] . "</a></li>";
                 }
 
                 if (count($followedArr) > 4) {

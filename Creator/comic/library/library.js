@@ -1,5 +1,27 @@
 const containerTable = document.querySelector('.chapters tbody');
 
+containerTable.addEventListener('click', (e) => {
+    if(e.target.classList.contains('bx-trash-alt')) {
+        
+        if(!confirm('Bạn có muốn xoá?')) {
+            return;
+        }
+
+        var data = {
+            MaTap: e.target.getAttribute('MaTap')
+        }
+        
+        $.ajax({
+            type: 'POST',
+            url: '../php/deleteEP.php',
+            data: data,
+            success: function (data) {
+                resetLoad();
+            }
+        });
+    }
+});
+
 function creactRow(MaTap, tapSo, name, view, date, tt) {
     var newRow = document.createElement('TR');
     var inner = `<td>
@@ -11,8 +33,8 @@ function creactRow(MaTap, tapSo, name, view, date, tt) {
                             <a href="">${name}</a>
                         </div>
                     <div class="buttons">
-                        <a title="chỉnh sửa"href=""><i class='bx bx-edit-alt'></i></a>
-                        <a title="bình luận" href=""><i class='bx bx-comment'></i></a>
+                        <a title="chỉnh sửa"href="${window.location.protocol + '//' + window.location.hostname +"/WEBTruynTranh/Creator/comic/edit-ep?MaTap="+MaTap}"><i class='bx bx-edit-alt'></i></a>
+                        <a title="Xoá" MaTap="${MaTap}" class="bx bx-trash-alt"></a>
                     </div>
                 </div>
                 </td>
@@ -110,3 +132,4 @@ createEPButton.onclick = function() {
         }
     });
 }
+

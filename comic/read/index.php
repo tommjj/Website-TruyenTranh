@@ -69,7 +69,7 @@ if (isset($_GET['MaTap'])) {
     <link rel="stylesheet" href="../../responsive-index.css">
     <link rel="stylesheet" href="read.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Document</title>
+    <title>Đọc</title>
 </head>
 
 <body>

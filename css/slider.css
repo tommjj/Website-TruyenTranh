@@ -139,6 +139,18 @@
     cursor: pointer;
 }
 
+@media only screen and (min-width: 1000px) {
+    .slider-container {
+        padding-top: 30%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .slider-container {
+        padding-top: 45%;
+    }
+}
+
 @media only screen and (max-width: 800px) {
     .slider-container {
         padding-top: 45%;

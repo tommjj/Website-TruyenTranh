@@ -144,6 +144,7 @@ h2 {
     font-size: 24px;
     color: var(--text-color);
     margin: 4px;
+    cursor: pointer;
 }
 
 .chapters tbody tr:hover td .chapter .buttons {

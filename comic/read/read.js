@@ -23,7 +23,6 @@ document.addEventListener('scroll', scrollHeader);
 const pageCtrl = document.getElementById('page-ctrl');
 const containerPage = document.querySelectorAll('.comic-page');
 
-console.log(container);
 
 pageCtrl.oninput = function() {
     console.log(pageCtrl.value);

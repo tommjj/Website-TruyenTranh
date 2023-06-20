@@ -62,7 +62,7 @@ if(isset($_SESSION['id'])) {
     <link rel="stylesheet" href="../css/page.css">
     <link rel="stylesheet" href="account.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Document</title>
+    <title>Tài khoảng</title>
 </head>
 
 <body>

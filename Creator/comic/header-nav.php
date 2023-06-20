@@ -162,10 +162,10 @@ $ComicData = mysqli_fetch_array($query);
 
         <ul>
             <li><a href="<?php echo getPath('/WEBTruynTranh/Creator/comic?MaTruyen=' . $MaTruyen) ?>"><i class='bx bx-category'></i>Tổng quan</a></li>
-            <li><a href=""><i class='bx bx-book-content'></i>Tập Truyện</a></li>
+            <li><a href="<?php echo getPath('/WEBTruynTranh/Creator/comic/library?MaTruyen=' . $MaTruyen) ?>"><i class='bx bx-book-content'></i>Tập Truyện</a></li>
             <li><a href=""><i class='bx bx-bar-chart-alt-2'></i></i>Số liệu</a></li>
             <li><a href=""><i class='bx bx-comment'></i></i>Bình luận</a></li>
-            <li><a href=""><i class='bx bx-customize'></i></i></i>Tuỳ chỉnh</a></li>
+            <li><a href="<?php echo getPath('/WEBTruynTranh/Creator/comic/library?MaTruyen=' . $MaTruyen) ?>"><i class='bx bx-customize'></i></i></i>Tuỳ chỉnh</a></li>
         </ul>
 
         <div class="contact">

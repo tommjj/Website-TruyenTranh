@@ -12,7 +12,7 @@ function creactRow(MaTruyen ,img, name, content, view, comment, like, date, tt) 
                         <div class="content">${content}</div>
                     </div>
                     <div class="buttons">
-                        <a title="chỉnh sửa"href=""><i class='bx bx-edit-alt'></i></a>
+                        <a title="chỉnh sửa"href="${window.location.protocol+'//'+window.location.hostname+'/WEBTruynTranh/Creator/comic?MaTruyen='+MaTruyen}"><i class='bx bx-edit-alt'></i></a>
                         <a title="bình luận" href=""><i class='bx bx-comment'></i></a>
                     </div>
                 </div>

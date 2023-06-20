@@ -135,14 +135,33 @@ setIndex();
 function getIdimg() {
     var val = [];
     for (let i = 0; i < pageChapterContainer.childElementCount; i++) {
-        val[i] = pageChapterContainer.children[i].getAttribute('idimg');
+        val.push(pageChapterContainer.children[i].getAttribute('matrang'));
     }
     return val;
 }
 
 $(".save").click(() => {
-    getIdimg();
     console.log(getIdimg());
+    var data = {
+        MaTap: document.querySelector(".add-img input[type = 'hidden']").value,
+        pages: getIdimg()
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '../php/setPage.php',
+        data: data,
+        success: function (data) {
+            console.log(data);
+            // if (data != 'false') {
+            //     data = JSON.parse(data);
+            //     pageChapterContainer.innerHTML = "";
+            //     for (var i in data) {
+            //         pageChapterContainer.appendChild(createPage(window.location.protocol + '//' + window.location.hostname + '/WEBTruynTranh/res/' + data[i]['Trang'], data[i]['MaTrang'], data[i]['SoTrang'], maTap));
+            //     }
+            // }
+        }
+    });
 });
 
 function loadPage(maTap) {
