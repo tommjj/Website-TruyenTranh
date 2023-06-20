@@ -6,7 +6,7 @@ function scrollHeader(event) {
         readingBar.classList.add('header-hidden');
         header.classList.add('hidden');
         nav.classList.add('header-hidden');
-        nav.classList.remove('active');
+        nav.classList.add('active');
         lastScroll = window.pageYOffset;
     } else if (window.pageYOffset < lastScroll -150) {
         header.classList.remove('hidden');
@@ -30,5 +30,25 @@ pageCtrl.oninput = function() {
 
     for(let i = 0; i < containerPage.length; i++) {
         containerPage[i].style.width = `${pageCtrl.value}%`;
+    }
+}
+
+const epSelecter = document.querySelectorAll('.reading-bar .ep-buttons select');
+
+epSelecter[0].addEventListener('change', (e) => {
+    window.location = "?MaTap="+e.target.value;
+});
+
+epSelecter[1].addEventListener('change', (e) => {
+    window.location = "?MaTap="+e.target.value;
+});
+
+const nextButton = document.querySelectorAll('.reading-bar .ep-buttons button.next-button');
+const preButton = document.querySelectorAll('.reading-bar .ep-buttons button.pre-button');
+
+nextButton[0].onclick = nextButton[1].onclick = preButton[0].onclick = preButton[1].onclick = function(e) {
+    
+    if(e.target.getAttribute('MaTap') != -1) {
+        window.location = "?MaTap="+e.target.getAttribute('MaTap');
     }
 }

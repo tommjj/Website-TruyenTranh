@@ -102,7 +102,7 @@ submitButton.onclick = () => {
 
 
 $('button.cancel').click(() => {
-    $('.create-comic').css("display", "none");
+    $('.create-comic').addClass('hidden');
 })
 
 pageBar.addEventListener('click', function(e) {

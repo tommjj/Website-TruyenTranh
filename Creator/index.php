@@ -1,3 +1,45 @@
+<?php 
+session_start();
+
+if(isset($_SESSION['id'])) {
+    $userID = $_SESSION['id'];
+} else {
+    header("location: http://localhost/WEBTruynTranh/");
+}
+?>
+
+<?php 
+
+// get number of follower
+    require("../server/comn.php");
+
+    $sql = "SELECT `id`, `Ten`, `AnhDD`, `about`, COUNT(theo_doi.NguoiTD) AS follow FROM `tai_khoan` INNER JOIN `theo_doi` on tai_khoan.id = theo_doi.NguoiDuocTD WHERE id='".$userID."'";
+
+    $query = mysqli_query($conn, $sql);
+
+    $userData = mysqli_fetch_array($query);
+
+// get tls
+
+$sql = "SELECT SUM(`LuocXem`) as sls FROM `tap_truyen`, truyen WHERE tap_truyen.MaTruyen = truyen.MaTruyen and truyen.id = '".$userID."' GROUP BY truyen.MaTruyen";
+
+$query = mysqli_query($conn, $sql);
+
+
+
+
+$sumView = 0;
+$maxView = 0;
+$temp;
+while($temp = mysqli_fetch_array($query)) {
+    $sumView += $temp['sls'];
+    if($temp['sls'] > $maxView) {
+        $maxView = $temp['sls'];
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,69 +59,9 @@
 </head>
 
 <body>
-    <header id="header">
-
-        <div class="logo">
-            <div class="nav-button" id="nav-button">
-                <i class='bx bx-menu'></i>
-            </div>
-
-            <a href="" class="logo">
-                <div class="logo-img">
-                    <img src="../res/web-logo.png" alt="">
-                </div>
-                <div class="logo-text">
-                    LOGO
-                </div>
-            </a>
-        </div>
-
-        <div class="search">
-            <div class="search-overlay" id="search-overlay">
-                <i class='bx bx-left-arrow-alt'></i>
-            </div>
-            <form action="">
-                <div class="search-icon"><i class='bx bx-search'></i></div>
-
-                <input type="text" name="" id="">
-                <input type="submit" value="search">
-            </form>
-
-        </div>
-
-        <div class="account">
-            <button class="up-commic-button"><i class='bx bx-book-add'></i>Tạo</button>
-
-            <div class="avt">
-                <img src="../res/fmeta.png" alt="">
-            </div>
-
-            <div class="name">
-                Fiammetta
-            </div>
-        </div>
-    </header>
-
-    <nav class="nav active" id="nav">
-        <div>
-            <div class="user">
-                <a href="" class="avt"><img src="../res/unnamed.webp" alt=""></a>
-                <div class="name">Fiammetta</div>
-            </div>
-
-            <ul>
-                <li><a href=""><i class='bx bx-category'></i>Tổng quan</a></li>
-                <li><a href=""><i class='bx bx-book-content'></i>Thư viện</a></li>
-                <li><a href=""><i class='bx bx-bar-chart-alt-2'></i></i>Số liệu</a></li>
-                <li><a href=""><i class='bx bx-comment'></i></i>Bình luận</a></li>
-                <li><a href=""><i class='bx bx-customize'></i></i></i>Tuỳ chỉnh</a></li>
-            </ul>
-
-            <div class="contact">
-                <a href=""><i class='bx bx-envelope'></i>Liên hệ với chúng tôi</a>
-            </div>
-        </div>
-    </nav>
+    <?php 
+        require("header-nav.php");
+    ?>
 
     <main class="main">
         <div class="container">
@@ -98,14 +80,14 @@
             <div class="card">
                 <div class="data">
                     <h2>Số liệu phân tích</h2>
-                    <p>Số người đăng ký hiện tại</p>
-                    <p class="flower">2</p>
+                    <p>Số người theo dỏi hiện tại</p>
+                    <p class="flower"><?php echo $userData['follow'];?></p>
                     <hr>
                     <h2>Tóm tắt</h2>
-                    <div class="view">Số lượt xem: <span class="number">5</span></div>
+                    <div class="view">Số lượt xem: <span class="number"><?php echo $sumView?></span></div>
                     <hr>
                     <h2>Truyện hàng đầu</h2>
-                    <div class="view">Số lượt xem: <span class="number">5</span></div>
+                    <div class="view">Số lượt xem: <span class="number"><?php echo $maxView?></span></div>
                     <a href="">CHUYỂN ĐẾN SỐ LIỆU PHÂN TÍCH</a>
                 </div>
                 <div class="back-ground">
@@ -114,7 +96,7 @@
 
             </div>
 
-            <div class="create-comic">
+            <div class="create-comic hidden">
                 <div class="contaner-page">
                     <div class="page-bar p-relative">
                         <ul>
@@ -134,7 +116,7 @@
                                 <h3>Ảnh đại diện</h3>
 
                                 <div class="avt-image">
-                                    <img src="../../res/KAF.png" alt="">
+                                    <img src="../res/KAF.png" alt="">
 
                                 </div>
                                 <div class="text">
@@ -191,6 +173,7 @@
     <!-- ====js==== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="comic/js/create-comic.js"></script>
+    <script src="comic/js/customization.js"></script>
     <script src="../index.js"></script>
     <script src="index.js"></script>
 </body>

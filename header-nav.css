@@ -444,7 +444,7 @@ header.hidden {
 
 .nav.active:not(:hover) .user .avt {
     margin: 4px; 
-    width: 100%;
+    width: 95%;
 }
 
 .nav.active:not(:hover) .user .name {
@@ -569,6 +569,10 @@ header.hidden {
     text-decoration: none;
     color: var(--text-color);
     transition: 0.3s;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .account-op ul li:hover {
@@ -627,13 +631,13 @@ header.hidden {
     background-color: var(--hover-overlay);
 }
 
-@media only screen and (min-width: 800px) {
+ @media only screen and (min-width: 800px) {
     body {
         display: flex;
     }
     
     .nav {
-        /* position: sticky; */
+      
         top: 0;
         left: 0;
         min-width: 180px;
@@ -657,7 +661,7 @@ header.hidden {
     .container.active {
         margin-left: 180px;
     }
-}
+} 
 
 @media only screen and (max-width: 1200px) {
     .container {

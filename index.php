@@ -43,64 +43,11 @@ if (isset($_GET['search'])) {
                 require("home.php");
             } else {
                 require("methodPhp/search.php");
+                require("methodPhp/filters-for-sreach.php");
             }
             ?>
 
-            <div class="filters">
-                <div class="bar">
-                    <div class="button">
-                        <i class='bx bx-slider'></i> Bộ lọc
-                    </div>
-                </div>
-                <div class="tags">
-                    <?php echo "<h4>Theo loại</h4>"; ?>
-                    <ul>
-                        <?php
-
-                        $sql = "SELECT * FROM `the_loai`";
-
-                        $query = mysqli_query($conn, $sql);
-
-                        $temp;
-
-                        
-
-                        while ($temp = mysqli_fetch_array($query)) {
-                            
-                            if (isset($_GET['tags'])) {
-                                $tempArr = $_GET['tags'];
-    
-                                if (gettype($tempArr) == "array") {
-                                    
-                                    $checkSelect = true;
-
-                                    foreach ($tempArr as $item) {
-                                        if($item == $temp['MaTL']) {
-                                            echo "<li class='active' ma='" . $temp['MaTL'] . "'>" . $temp['TenTL'] . "</li>";
-                                            $checkSelect = false;
-                                            break;
-                                        } 
-                                    }
-
-                                    if($checkSelect) {
-                                        echo "<li ma='" . $temp['MaTL'] . "'>" . $temp['TenTL'] . "</li>";
-                                    }
-                                } else {
-
-                                    if($tempArr == $temp['MaTL']) {
-                                        echo "<li class='active' ma='" . $temp['MaTL'] . "'>" . $temp['TenTL'] . "</li>";
-                                    } else {
-                                        echo "<li ma='" . $temp['MaTL'] . "'>" . $temp['TenTL'] . "</li>";
-                                    }
-                                }
-                            } else {
-                                echo "<li ma='" . $temp['MaTL'] . "'>" . $temp['TenTL'] . "</li>";
-                            }                  
-                        }
-                        ?>
-                    </ul>
-                </div>
-            </div>
+            
 
         </div>
     </main>
@@ -111,9 +58,20 @@ if (isset($_GET['search'])) {
     <script src="js/slider.js"></script>
     <script src="js/items.js"></script>
     <script src="js/filters.js"></script>
+    <script src="js/save-comic.js"></script>
+    <script src="js/load-home.js"></script>
 
     <script>
         showItems(document.querySelector('#container'), <?php if(isset($searchArr)) echo "'" . json_encode($searchArr) . "'"; else echo 'null'?>);
+        setUpFollowMethed(document.querySelector('#container'));
+    </script>
+
+    <script>
+        <?php 
+        if (!isset($_GET['search'])) {
+            echo 'setLoad()';
+        }
+        ?> 
     </script>
 </body>
 

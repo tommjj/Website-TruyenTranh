@@ -49,26 +49,7 @@ if (isset($userID)) {
 
     $query = mysqli_query($conn, $sql);
 
-    $userData = mysqli_fetch_array($query);
-
-
-    $sql = "SELECT  tai_khoan.id, tai_khoan.Ten, tai_khoan.AnhDD FROM `theo_doi`, tai_khoan WHERE theo_doi.NguoiDuocTD = tai_khoan.id and theo_doi.NguoiTD = '" . $userID . "'";
-
-    $query = mysqli_query($conn, $sql);
-
-    $numFollowed = mysqli_num_rows($query);
-
-    $followedArr;
-    if ($numFollowed > 0) {
-        $temp;
-        while ($temp = mysqli_fetch_array($query)) {
-            $followedArr[] = $temp;
-        }
-    }
-
-    mysqli_fetch_array($query);
-} else {
-    $unknown = true;
+    $userInfo = mysqli_fetch_array($query);
 }
 ?>
 
@@ -130,10 +111,11 @@ if (isset($userID)) {
     <div class="account" <?php if (isset($unknown)) echo "style=\"display: none;\"" ?>>
         <div class="avt">
             <?php
-            if ($userData['AnhDD'] == null) {
+            
+            if ($userInfo['AnhDD'] == null) {
                 echo "<img src=\"" . getServertPageURL() . "/WEBTruynTranh/res/unnamed.webp\" alt=\"\">";
             } else {
-                echo "<img src=\"" . getServertPageURL() . "/WEBTruynTranh/res/" . $userData['AnhDD'] . "\" alt=\"\">";
+                echo "<img src=\"" . getServertPageURL() . "/WEBTruynTranh/res/" . $userInfo['AnhDD'] . "\" alt=\"\">";
             }
             ?>
         </div>
@@ -141,13 +123,13 @@ if (isset($userID)) {
 
 
         <div class="name">
-            <?php echo $userData['Ten'] ?>
+             <?php echo $userInfo['Ten'] ?> 
         </div>
 
         <div class="account-op">
             <ul>
                 <li><a href="<?php echo getServertPageURL() . "/WEBTruynTranh/account/" ?>"><i class='bx bx-user'></i></i>Trang của bạn</a></li>
-                <li><a href="<?php echo getPath('/WEBTruynTranh/Creator/')?>"><i class='bx bxs-grid'></i>Quản lý</a></li>
+                <li><a href=""><i class='bx bxs-grid'></i>Quản lý</a></li>
                 <li id="log-out"><i class='bx bx-log-out'></i>Đăng xuất</li>
             </ul>
         </div>
@@ -160,34 +142,17 @@ if (isset($userID)) {
 
 <nav class="nav active hidden" id="nav">
     <div>
+        <div class="user">
+            <a href="<?php echo getPath('/WEBTruynTranh/account/')?>" class="avt"><img src="<?php echo getPathImg($userInfo['AnhDD'])?>" alt=""></a>
+            <div class="name"><?php echo $userInfo['Ten']?></div>
+        </div>
         <ul>
-            <li><a href="<?php echo getServertPageURL() . "/WEBTruynTranh/" ?>"><i class='bx bx-home-alt'></i>Trang chủ </a></li>
-            <li><a href=""><i class='bx bx-book-content'></i>Truyện đã lưu</a></li>
-            <li><a href=""><i class='bx bx-book-reader' ></i></i>Đã theo dõi</a></li>
-            <li><a href=""><i class='bx bx-bookmark-alt'></i></i>Lịch sử</a></li>
-            <li><a href=""><i class='bx bx-like'></i>Đã thích</a></li>
+            <li><a href="<?php echo getPath('/WEBtruynTranh/Creator/')?>"><i class='bx bx-category'></i>Tổng quan</a></li>
+            <li><a href="<?php echo getPath('/WEBtruynTranh/Creator/library/')?>"><i class='bx bx-book-content'></i>Thư viện</a></li>
+            <li><a href=""><i class='bx bx-bar-chart-alt-2'></i></i>Số liệu</a></li>
+            <li><a href=""><i class='bx bx-comment'></i></i>Bình luận</a></li>
+            <li><a href="<?php echo getPath('/WEBtruynTranh/Creator/customizzation/') ?>"><i class='bx bx-customize'></i></i></i>Tuỳ chỉnh</a></li>
         </ul>
-
-        <?php
-        if (!isset($unknown)) {
-            echo '<h4>Đang Theo dỏi</h4>';
-
-            if (!empty($followedArr)) {
-
-                echo "<ul class=\"show-followed\">";
-
-                foreach ($followedArr as $item) {
-                    echo "<li><a href=\"" . getServertPageURL() . "/WEBTruynTranh/account/account.php?id=" . $item['id'] . "\"><img src=\"" . getPathImg($item['AnhDD']) . "\" alt=\"\">" . $item['Ten'] . "</a></li>";
-                }
-
-                if (count($followedArr) > 4) {
-                    echo "<li class=\"show-more-followed\"><a><i class='bx bx-chevron-down' ></i></a></li>";
-                }
-                echo "</ul>";
-            }
-        }
-
-        ?>
 
         <div class="contact">
             <a href=""><i class='bx bx-envelope'></i>Liên hệ với chúng tôi</a>

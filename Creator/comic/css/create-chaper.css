@@ -2,6 +2,11 @@
     display: block;
 }
 
+.create-comic.hidden{
+    display: none;
+}
+
+
 .create-comic .contaner-page {
     margin-top: 14px;
 }

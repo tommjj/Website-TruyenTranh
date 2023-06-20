@@ -1,3 +1,47 @@
+<?php
+if(isset($_GET['MaTruyen'])) {
+    require("../server/comn.php");
+
+    //get comic data
+    $sql = "SELECT `MaTruyen`, `TenTruyen`, `AnhBia`, `NoiDung`, tai_khoan.id, `MaTT`, `MaCD`, `NgayTao`, tai_khoan.Ten, tai_khoan.AnhDD FROM `truyen`, tai_khoan WHERE tai_khoan.id = truyen.id and truyen.MaTruyen = '".$_GET['MaTruyen']."'";
+
+    $query = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($query) != 1) {
+        header("location: http://localhost/WEBTruynTranh");
+    }
+
+    $ComicData = mysqli_fetch_array($query);
+
+    //get ep
+
+    $sql = "SELECT `MaTap`, `TenTap`, `TapSo`, `LuocXem`, `NgayDang`, `MaCD`, `MaTruyen` FROM `tap_truyen` WHERE MaTruyen = '".$_GET['MaTruyen']."' ORDER BY TapSo ASC";
+
+    $query = mysqli_query($conn, $sql);
+
+    $Ep;
+    $temp;
+    while($temp =  mysqli_fetch_array($query)) {
+        $Ep[] = $temp;
+    }
+
+    //get tags
+    $sql = "SELECT the_loai.MaTL, the_loai.TenTL FROM the_loai, tl_truyen WHERE the_loai.MaTL = tl_truyen.MaTL and tl_truyen.MaTruyen = '".$_GET['MaTruyen']."'";
+
+    $query = mysqli_query($conn, $sql);
+
+    $tags;
+    $temp;
+    while($temp =  mysqli_fetch_array($query)) {
+        $tags[] = $temp;
+    }
+
+} else {
+    header("location: http://localhost/WEBTruynTranh");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,70 +49,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="header-nav.css">
-    <link rel="stylesheet" href="item.css">
-    <link rel="stylesheet" href="responsive-index.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../header-nav.css">
+    <link rel="stylesheet" href="../item.css">
+    <link rel="stylesheet" href="../responsive-index.css">
+    <link rel="stylesheet" href="../css/page.css">
     <link rel="stylesheet" href="view.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Document</title>
 </head>
 
 <body>
-    <header id="header">
-
-        <div class="logo">
-            <div class="nav-button" id="nav-button">
-                <i class='bx bx-menu'></i>
-            </div>
-
-            <a href="" class="logo">
-                <div class="logo-img">
-                    <img src="./res/web-logo.png" alt="">
-                </div>
-                <div class="logo-text">
-                    LOGO
-                </div>
-            </a>
-        </div>
-
-        <div class="search">
-            <div class="search-overlay" id="search-overlay">
-                <i class='bx bx-left-arrow-alt'></i>
-            </div>
-            <form action="">
-                <div class="search-icon"><i class='bx bx-search'></i></div>
-
-                <input type="text" name="" id="">
-                <input type="submit" value="search">
-            </form>
-
-        </div>
-
-        <div class="account">
-            <div class="avt">
-                <img src="./res/fmeta.png" alt="">
-            </div>
-
-            <div class="name">
-                Fiammetta
-            </div>
-        </div>
-    </header>
-
-    <nav class="nav hidden" id="nav">
-        <div>
-            <ul>
-                <li><a href=""><i class='bx bx-home-alt'></i>Trang chủ </a></li>
-                <li><a href=""><i class='bx bx-book-content'></i>Truyện của bạn</a></li>
-                <li><a href=""><i class='bx bx-history'></i>Lịch sử</a></li>
-                <li><a href=""><i class='bx bx-like'></i>Đã thích</a></li>
-            </ul>
-
-            <div class="contact">
-                <a href=""><i class='bx bx-envelope'></i>Liên hệ với chúng tôi</a>
-            </div>
-        </div>
+    <?php
+        require("../header-nav.php");
+    ?>
 
     </nav>
     <main>
@@ -77,30 +71,33 @@
             <div class="info">
 
                 <div class="img">
-                    <img src="res/KAF.png" alt="">
+                    <img src="<?php echo  getPathImg($ComicData['AnhBia'])?>" alt="">
                 </div>
                 <div class="text">
                     <div class="name">
-                        con cac 3m cua Le Thanh Duoc va cai lo gia the longest
+                        <?php echo $ComicData['TenTruyen'];?>
                     </div>
 
-                    <a class="author" href="">
-                        <img src="res/fmeta.png" alt="" class="avt">
-                        <p class="author-name">i don't know</p>
+                    <a class="author" href="../account/?id= <?php echo  $ComicData['id']?>">
+                        <img src="<?php echo  getPathImg($ComicData['AnhDD'])?>" alt="" class="avt">
+                        <p class="author-name"><?php echo $ComicData['Ten'];?></p>
                     </a>
 
                     <div class="content">
-                        oh i love it and i hate it at the same time <br>
-                        you and i drink poison from the same vine <br>
-                        oh i love it and i hate it at the same time <br>
+                    
+                        <?php echo $ComicData['NoiDung'];?>
                     </div>
 
                     <div class="tags">
                         <ul>
-                            <li><a href="">vui</a> </li>
-                            <li><a href="">ko vui</a></li>
-                            <li><a href="">vui</a> </li>
-                            <li><a href="">ko vui</a></li>
+                            <?php 
+                            if(!empty($tags)) {
+                                foreach($tags as $item) {
+                                    echo "<li><a href=".">".$item['TenTL']."</a> </li>";
+                                }
+                            }
+                            
+                            ?>                                                
                         </ul>
                     </div>
                     <div class="buttons">
@@ -109,7 +106,7 @@
                     </div>
 
                 </div>
-                <div class="comic-page">
+                <div class="contaner-page">
                     <div class="page-bar">
                         <ul>
                             <li class="active">Chapters</li>
@@ -119,49 +116,17 @@
 
                     <div class="page active">
                         <div class="eposide">
-                            <h2>
-                                Eposide
-                            </h2>
+                            
                             <ul>
-                                <li><a href="">
-                                        <h3 class="stt">#1</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#2</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#3</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#4</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#5</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#6</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#7</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#8</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#9</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#10</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#11</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#12</h3>
-                                    </a></li>
-                                <li><a href="">
-                                        <h3 class="stt">#13</h3>
-                                    </a></li>
+                                <?php 
+                                if(!empty($Ep)) {
+                                    foreach($Ep as $item) {
+                                        echo "<li><a href='read?MaTap=".$item['MaTap']."'>
+                                        <h3 class='stt'>#".$item['TapSo']."</h3> ".$item['TenTap']."
+                                        </a></li>";
+                                    }
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div>
@@ -337,8 +302,9 @@
         </div>
 
     </main>
-    <script src="index.js"></script>
-    <script src="js/view.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../index.js"></script>
+    <script src="../js/view.js"></script>
 </body>
 
 </html>

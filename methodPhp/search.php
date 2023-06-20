@@ -1,4 +1,12 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if(isset($_SESSION['id'])) {
+    $userID = $_SESSION['id'];
+}
+
 
 if ($_GET) {
     $select = "SELECT t.MaTruyen, t.TenTruyen, t.AnhBia, t.NoiDung, t.NgayTao, t.MaCD ";
@@ -15,11 +23,11 @@ if ($_GET) {
 
 
     if (isset($_GET['search'])) {
-        if($_GET['search'] == "") {
-            return;
-        } else {
-            $search = trim($_GET['search']);
-        }
+        // if($_GET['search'] == "") {
+        //     return;
+        // } else {
+        //     $search = trim($_GET['search']);
+        // }
 
 
         if(isset($_GET['user']) ? $_GET['user'] : true) {

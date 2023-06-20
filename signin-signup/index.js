@@ -24,7 +24,7 @@ signIn.onclick = () => {
         data: formData,
         success: function (data) {
             if (data === 'true') {
-                window.location = "../account/account.php";
+                window.location = "../";
             } else {
                 document.querySelector('.error-signin').innerHTML = data;
                 return false;
