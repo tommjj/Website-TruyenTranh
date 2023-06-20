@@ -35,7 +35,7 @@ function loadItem() {
                     for (var i in data) {
                         container.appendChild(creatItem(data[i].AnhBia, data[i].TenTruyen, data[i].NoiDung, data[i].MaTruyen));
                     }
-                    nuberItems += i + 1;
+                    nuberItems += i;
                     if (i < limitLoad-1) loadAll = true;
                 }
             }

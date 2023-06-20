@@ -25,9 +25,6 @@ $sql = "SELECT SUM(`LuocXem`) as sls FROM `tap_truyen`, truyen WHERE tap_truyen.
 
 $query = mysqli_query($conn, $sql);
 
-
-
-
 $sumView = 0;
 $maxView = 0;
 $temp;
@@ -36,6 +33,17 @@ while($temp = mysqli_fetch_array($query)) {
     if($temp['sls'] > $maxView) {
         $maxView = $temp['sls'];
     }
+}
+
+//get tags
+$sql = "SELECT * FROM `the_loai` WHERE 1";
+
+$query = mysqli_query($conn, $sql);
+
+$tags;
+$temp;
+while($temp = mysqli_fetch_array($query)) {
+    $tags[] = $temp;
 }
 
 ?>
@@ -116,7 +124,7 @@ while($temp = mysqli_fetch_array($query)) {
                                 <h3>Ảnh đại diện</h3>
 
                                 <div class="avt-image">
-                                    <img src="../res/KAF.png" alt="">
+                                    <img src="" alt="">
 
                                 </div>
                                 <div class="text">
@@ -131,7 +139,7 @@ while($temp = mysqli_fetch_array($query)) {
                             <div class="change-info">
                                     <h3>Tên</h3>
                                     <p>Chọn tên cho truyện của bạn.</p>
-                                    <input type="text" name="name" id="">
+                                    <input type="text" name="name" id="" autocomplete="off">
                                     <h3>Thông tin mô tả</h3>
                                     <p>Giới thiệu truyện của bạn.</p>
                                     <textarea name="description" id="" cols="30" rows="10"></textarea>               
@@ -144,11 +152,13 @@ while($temp = mysqli_fetch_array($query)) {
                                 <p>Chọn thể loại cho truyện của bạn, bạn có thể chọn nhiều thẻ khác nhau.</p>
                                 
                                 <ul class="tags">
-                                    <li>comic</li>
-                                    <li>manga</li>
-                                    <li>gia đình</li>
-                                    <li>đời thường</li>
-                                    <li>lãng mạng</li>
+                                    <?php 
+                                        if(!empty($tags)) {
+                                            foreach($tags as $item) {
+                                                echo "<li Ma='".$item['MaTL']."'>".$item['TenTL']."</li>";
+                                            }
+                                        }
+                                    ?>
                                 </ul>
                        </div>
                         </div>

@@ -1,18 +1,38 @@
 <?php 
 session_start();
 require("C:/xampp/htdocs/WEBTruynTranh/server/comn.php");
-
 if(isset($_SESSION['id'])) {
     $userID = $_SESSION['id'];
 } else {
     header("location: http://localhost/WEBTruynTranh/");
 }
 ?>
-
 <?php 
+    
+    
+
+
     if($_POST) {
         $sqlchange = "UPDATE `tai_khoan` SET ";
         $checkf = false;
+
+        if(isset($_POST["name"])) {
+            $sql = "SELECT `id` FROM `tai_khoan` WHERE Ten= '".$_POST["name"]."' and id != '".$userID."'" ;
+            $query = mysqli_query($conn, $sql);
+    
+            if(mysqli_num_rows($query) > 0) {
+                echo 'Ename';
+                return;
+            }
+    
+    
+            if($checkf) {
+                $sqlchange .= ", Ten = '".$_POST["name"]."' ";
+            } else {
+                $sqlchange .= " Ten = '".$_POST["name"]."' ";
+                $checkf = true;
+            }
+        }
 
         if(isset($_FILES["avt"])) {
             $error = array();
@@ -41,22 +61,18 @@ if(isset($_SESSION['id'])) {
                     $st = unlink("../../res/".$imgr['AnhDD']);
                 }
 
-                $sqlchange .= " AnhDD = '".$imgName."'";
-                $checkf = true;
+                if($checkf) {
+                    $sqlchange .= ", AnhDD = '".$imgName."' ";
+                } else {
+                    $sqlchange .= " AnhDD = '".$imgName."' ";
+                    $checkf = true;
+                }
             } else {
                 array_push($error, "$file_name, ");
             }
         }
     
-        if(isset($_POST["name"])) {
-            if($checkf) {
-                $sqlchange .= ", Ten = '".$_POST["name"]."' ";
-            } else {
-                $sqlchange .= " Ten = '".$_POST["name"]."' ";
-                $checkf = true;
-            }
-           
-        }
+        
         
         if(isset($_POST["description"])) {
             if($checkf) {
@@ -72,7 +88,7 @@ if(isset($_SESSION['id'])) {
         $query = mysqli_query($conn, $sqlchange);
 
         if($query) {
-            echo 'true';
+            echo "true";
             return;
         } else {
             echo $sqlchange;

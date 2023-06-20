@@ -52,7 +52,7 @@ function loadRow() {
             if(i < LoadLimit-1) {
                 checkAll = true;
             }
-            numitems += i+1;
+            numitems += i;
 
         }
     });

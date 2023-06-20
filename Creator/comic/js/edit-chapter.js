@@ -3,14 +3,14 @@ const pageChapterContainer = document.querySelector('.page-chapter-container');
 var indexAdd = -1;
 
 pageChapterContainer.addEventListener('click', (e) => {
-    
+
     if (e.target.parentElement.classList.contains('up')) {
         var index = [...e.target.parentElement.parentElement.parentElement.parentElement.parentElement.children].indexOf(e.target.parentElement.parentElement.parentElement.parentElement);
         if (index > 0 && pageChapterContainer.childElementCount > 1) {
 
             scroll(0, pageChapterContainer.children[index - 1].offsetTop);
 
-            pageChapterContainer.insertBefore(pageChapterContainer.children[index], pageChapterContainer.children[index-1])
+            pageChapterContainer.insertBefore(pageChapterContainer.children[index], pageChapterContainer.children[index - 1])
             setIndex();
         }
     }
@@ -18,20 +18,20 @@ pageChapterContainer.addEventListener('click', (e) => {
     if (e.target.parentElement.classList.contains('down')) {
         var index = [...e.target.parentElement.parentElement.parentElement.parentElement.parentElement.children].indexOf(e.target.parentElement.parentElement.parentElement.parentElement);
         if (index <= (pageChapterContainer.childElementCount - 2)) {
- 
+
             scroll(0, pageChapterContainer.children[index + 1].offsetTop);
 
-            pageChapterContainer.insertBefore(pageChapterContainer.children[index+1], pageChapterContainer.children[index])
+            pageChapterContainer.insertBefore(pageChapterContainer.children[index + 1], pageChapterContainer.children[index])
             setIndex();
         }
     }
 
     if (e.target.parentElement.classList.contains('add')) {
         var index = [...e.target.parentElement.parentElement.parentElement.parentElement.parentElement.children].indexOf(e.target.parentElement.parentElement.parentElement.parentElement);
-        
+
         indexAdd = index;
         $('.add-img input').click();
-        
+
         setIndex();
 
     }
@@ -48,11 +48,11 @@ pageChapterContainer.addEventListener('click', (e) => {
 }, false);
 
 const AddImg = document.querySelector(".add-img");
-const inputAddImg = document.querySelector(".add-img input");
+const inputAddImg = document.querySelector(".add-img input[type = 'file']");
 
 const validImageTypes = ['image/gif', 'image/jpeg', 'image/png']
 
-function createPage(imgUrl, imgid, nuber) {
+function createPage(imgUrl, imgid, nuber, maTap) {
     var val = `<img src="${imgUrl}" alt="">
                     <div class="page-bar">
                         <div class="page-ctrl">
@@ -66,49 +66,59 @@ function createPage(imgUrl, imgid, nuber) {
 
     var page = document.createElement('DIV');
     page.classList.add('page-chapter');
-    page.setAttribute("idimg", imgid);
+    page.setAttribute("MaTrang", imgid);
+    page.setAttribute("MaTap", maTap);
     page.innerHTML = val;
     return page;
 }
 
+
+
 inputAddImg.addEventListener('change', (e) => {
     var formData = new FormData($('.add-img')[0]);
+
+    formData.append('SoTrang', pageChapterContainer.childElementCount + 1);
+
     console.log($('.add-img'));
 
     $.ajax({
         type: 'POST',
-        url: 'js/edit.php',
+        url: '../php/createPage.php',
         processData: false,
         contentType: false,
         data: formData,
         success: function (data) {
-            const files = e.target.files
-            const file = files[0]
-            const fileType = file['type']
+            console.log(data);
+            if (data != 'false') {
+                data = JSON.parse(data);
+                const files = e.target.files
+                const file = files[0]
+                const fileType = file['type']
 
-            if (!validImageTypes.includes(fileType)) {
-                return;
-            }
-
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-
-
-            fileReader.onload = function () {
-                const url = fileReader.result;
-                if(indexAdd == -1) {
-                    pageChapterContainer.appendChild(createPage(url, data, pageChapterContainer.childElementCount + 1));
-                    scroll(0, pageChapterContainer.children[pageChapterContainer.childElementCount - 1].offsetTop);
-                } else {
-
-                    pageChapterContainer.insertBefore(createPage(url, data, pageChapterContainer.childElementCount + 1), pageChapterContainer.children[indexAdd+1]);
-                    scroll(0, pageChapterContainer.children[indexAdd+1].offsetTop);
-                    indexAdd = -1;
+                if (!validImageTypes.includes(fileType)) {
+                    return;
                 }
-                
-            }
-            setIndex();
 
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+
+
+                fileReader.onload = function () {
+                    const url = fileReader.result;
+                    if (indexAdd == -1) {
+                        pageChapterContainer.appendChild(createPage(url, data['MaTrang'], pageChapterContainer.childElementCount + 1, data['MaTap']));
+                        scroll(0, pageChapterContainer.children[pageChapterContainer.childElementCount - 1].offsetTop);
+                        setIndex();
+                    } else {
+
+                        pageChapterContainer.insertBefore(createPage(url, data['MaTrang'], pageChapterContainer.childElementCount + 1), pageChapterContainer.children[indexAdd + 1], data['MaTap']);
+                        scroll(0, pageChapterContainer.children[indexAdd + 1].offsetTop);
+                        indexAdd = -1;
+                        setIndex();
+                    }
+
+                }
+            }
         }
     });
 });
@@ -135,5 +145,26 @@ $(".save").click(() => {
     console.log(getIdimg());
 });
 
+function loadPage(maTap) {
+    var data = {
+        MaTap: maTap
+    };
+
+    $.ajax({
+        type: 'GET',
+        url: '../php/getPage.php',
+        data: data,
+        success: function (data) {
+            console.log(data);
+            if (data != 'false') {
+                data = JSON.parse(data);
+                pageChapterContainer.innerHTML = "";
+                for (var i in data) {
+                    pageChapterContainer.appendChild(createPage(window.location.protocol + '//' + window.location.hostname + '/WEBTruynTranh/res/' + data[i]['Trang'], data[i]['MaTrang'], data[i]['SoTrang'], maTap));
+                }
+            }
+        }
+    });
+}
 
 

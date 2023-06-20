@@ -15,8 +15,11 @@ luu.onclick = function() {
         data: formData,
         success : function(data) {
             console.log(data);
+            console.log(data);
             if(data == 'true') {
                 alert('sua Thanh cong!');
+            } else if(data == 'Ename') {
+                alert('ten da ton tai!');
             } else {
                 alert('khong Thanh cong!');
             }

@@ -6,7 +6,8 @@
 
 .container {
     display: flex;
-    flex-wrap: wrap;   
+    flex-wrap: wrap; 
+    align-content: flex-start;
 }
 
 .side-bar {
@@ -19,6 +20,7 @@
 .side-bar h2 {
     color: var(--text-color);
     font-size: 2.0em;
+    padding-left: 8px;
 }
 
 .container {
