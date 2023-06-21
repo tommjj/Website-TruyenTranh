@@ -170,7 +170,7 @@ if (isset($userID)) {
 
         <?php
         if (!isset($unknown)) {
-            echo '<h4>Đang Theo dỏi</h4>';
+            echo '<h4>Đang Theo dõi</h4>';
 
             if (!empty($followedArr)) {
 
