@@ -98,7 +98,7 @@ if (isset($userID)) {
         <form  class="search-form" action="<?php echo getServertPageURL() . "/WEBTruynTranh/"; ?>" method="GET" enctype="multipart/form-data">
             <div class="search-icon"><i class='bx bx-search'></i></div>
 
-            <input type="text" name="search" id="" autocomplete="off" value="<?php if (isset($_GET['search'])) {echo $_GET['search'];}?>">
+            <input aria-label="search" type="text" name="search" id="" autocomplete="off" value="<?php if (isset($_GET['search'])) {echo $_GET['search'];}?>">
             <input type="hidden" name="like" id="" value=3>
             <input type="submit" onclick="return checkSreachBar()" value="search">
 
@@ -163,9 +163,9 @@ if (isset($userID)) {
         <ul>
             <li><a href="<?php echo getServertPageURL() . "/WEBTruynTranh/" ?>"><i class='bx bx-home-alt'></i>Trang chủ </a></li>
             <li><a href="<?php echo getServertPageURL() . "/WEBTruynTranh/feed/save" ?>"><i class='bx bx-book-content'></i>Truyện đã lưu</a></li>
-            <li><a href=""><i class='bx bx-book-reader' ></i></i>Đã theo dõi</a></li>
-            <li><a href=""><i class='bx bx-bookmark-alt'></i></i>Lịch sử</a></li>
-            <li><a href=""><i class='bx bx-like'></i>Đã thích</a></li>
+            <li><a href="<?php echo getServertPageURL() . "/WEBTruynTranh/" ?>"><i class='bx bx-book-reader' ></i></i>Đã theo dõi</a></li>
+            <li><a href="<?php echo getServertPageURL() . "/WEBTruynTranh/" ?>"><i class='bx bx-bookmark-alt'></i></i>Lịch sử</a></li>
+            <li><a href="<?php echo getServertPageURL() . "/WEBTruynTranh/" ?>"><i class='bx bx-like'></i>Đã thích</a></li>
         </ul>
 
         <?php
@@ -186,8 +186,13 @@ if (isset($userID)) {
                 echo "</ul>";
             }
         }
-
+        
         ?>
+         <ul>
+            <li></li>
+            <li></li>
+        </ul>
+
 
         <div class="contact">
             <a href=""><i class='bx bx-envelope'></i>Liên hệ với chúng tôi</a>

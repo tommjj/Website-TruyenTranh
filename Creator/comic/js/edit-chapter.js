@@ -72,55 +72,63 @@ function createPage(imgUrl, imgid, nuber, maTap) {
     return page;
 }
 
+const MaTap = new URLSearchParams(window.location.search).get('MaTap');
 
+console.log(MaTap);
 
 inputAddImg.addEventListener('change', (e) => {
-    var formData = new FormData($('.add-img')[0]);
+    
+    const files = e.target.files;
 
-    formData.append('SoTrang', pageChapterContainer.childElementCount + 1);
+    
 
-    console.log($('.add-img'));
+    for(let i = 0; i < files.length; i++) {
+        const file = files[i];
 
-    $.ajax({
-        type: 'POST',
-        url: '../php/createPage.php',
-        processData: false,
-        contentType: false,
-        data: formData,
-        success: function (data) {
-            console.log(data);
-            if (data != 'false') {
-                data = JSON.parse(data);
-                const files = e.target.files
-                const file = files[0]
-                const fileType = file['type']
+        const fileType = file['type'];
 
-                if (!validImageTypes.includes(fileType)) {
-                    return;
-                }
+        if (!validImageTypes.includes(fileType)) {
+            continue;
+        }
 
-                const fileReader = new FileReader();
-                fileReader.readAsDataURL(file);
+        var formData = new FormData();
+        formData.append('img', file, file['name']);
+        formData.append('SoTrang', pageChapterContainer.childElementCount + 1);
+        formData.append('MaTap', MaTap);
 
-
-                fileReader.onload = function () {
-                    const url = fileReader.result;
-                    if (indexAdd == -1) {
-                        pageChapterContainer.appendChild(createPage(url, data['MaTrang'], pageChapterContainer.childElementCount + 1, data['MaTap']));
-                        scroll(0, pageChapterContainer.children[pageChapterContainer.childElementCount - 1].offsetTop);
-                        setIndex();
-                    } else {
-
-                        pageChapterContainer.insertBefore(createPage(url, data['MaTrang'], pageChapterContainer.childElementCount + 1), pageChapterContainer.children[indexAdd + 1], data['MaTap']);
-                        scroll(0, pageChapterContainer.children[indexAdd + 1].offsetTop);
-                        indexAdd = -1;
-                        setIndex();
+        $.ajax({
+            type: 'POST',
+            url: '../php/createPage.php',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (data) {
+                console.log(data);
+                if (data != 'false') {
+                    data = JSON.parse(data);
+                    const fileReader = new FileReader();
+                    fileReader.readAsDataURL(file);
+    
+                    fileReader.onload = function () {
+                        const url = fileReader.result;
+                        console.log(url);
+                        if (indexAdd == -1) {
+                            pageChapterContainer.appendChild(createPage(url, data['MaTrang'], pageChapterContainer.childElementCount + 1, data['MaTap']));
+                            scroll(0, pageChapterContainer.children[pageChapterContainer.childElementCount - 1].offsetTop);
+                            setIndex();
+                        } else {
+    
+                            pageChapterContainer.insertBefore(createPage(url, data['MaTrang'], pageChapterContainer.childElementCount + 1), pageChapterContainer.children[indexAdd + 1], data['MaTap']);
+                            scroll(0, pageChapterContainer.children[indexAdd + 1].offsetTop);
+                            indexAdd = -1;
+                            setIndex();
+                        }
+    
                     }
-
                 }
             }
-        }
-    });
+        });
+    }
 });
 
 function setIndex() {

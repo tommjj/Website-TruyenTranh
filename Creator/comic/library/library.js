@@ -1,16 +1,16 @@
 const containerTable = document.querySelector('.chapters tbody');
 
 containerTable.addEventListener('click', (e) => {
-    if(e.target.classList.contains('bx-trash-alt')) {
-        
-        if(!confirm('Bạn có muốn xoá?')) {
+    if (e.target.classList.contains('bx-trash-alt')) {
+
+        if (!confirm('Bạn có muốn xoá?')) {
             return;
         }
 
         var data = {
             MaTap: e.target.getAttribute('MaTap')
         }
-        
+
         $.ajax({
             type: 'POST',
             url: '../php/deleteEP.php',
@@ -22,7 +22,7 @@ containerTable.addEventListener('click', (e) => {
     }
 });
 
-function creactRow(MaTap, tapSo, name, view, date, tt) {
+function createRow(MaTap, tapSo, name, view, date, tt) {
     var newRow = document.createElement('TR');
     var inner = `<td>
                     ${tapSo}
@@ -33,7 +33,7 @@ function creactRow(MaTap, tapSo, name, view, date, tt) {
                             <a href="">${name}</a>
                         </div>
                     <div class="buttons">
-                        <a title="chỉnh sửa"href="${window.location.protocol + '//' + window.location.hostname +"/WEBTruynTranh/Creator/comic/edit-ep?MaTap="+MaTap}"><i class='bx bx-edit-alt'></i></a>
+                        <a title="chỉnh sửa"href="${window.location.protocol + '//' + window.location.hostname + "/WEBTruynTranh/Creator/comic/edit-ep?MaTap=" + MaTap}"><i class='bx bx-edit-alt'></i></a>
                         <a title="Xoá" MaTap="${MaTap}" class="bx bx-trash-alt"></a>
                     </div>
                 </div>
@@ -46,19 +46,15 @@ function creactRow(MaTap, tapSo, name, view, date, tt) {
     return newRow;
 }
 
-const LoadLimit = 30;
-var numitems = 0;
+const LoadLimit = 2;
+var page = 0;
 var checkAll = false;
 var MaTruyen = null;
-
-function setMaTruyen(value) {
-    MaTruyen = value;
-}
 
 function loadRow() {
     var data = {
         MaTruyen: MaTruyen,
-        at: numitems,
+        at: page * LoadLimit,
         limit: LoadLimit
     }
 
@@ -67,22 +63,53 @@ function loadRow() {
         url: '../php/GetEP.php',
         data: data,
         success: function (data) {
+
             data = JSON.parse(data);
             containerTable.innerHTML = '';
 
             for (var i in data) {
-                containerTable.appendChild(creactRow(data[i]['MaTap'], data[i]['TapSo'], data[i]['TenTap'], data[i]['LuocXem'], data[i]['NgayDang'], data[i]['TenCD']));
+                containerTable.appendChild(createRow(data[i]['MaTap'], data[i]['TapSo'], data[i]['TenTap'], data[i]['LuocXem'], data[i]['NgayDang'], data[i]['TenCD']));
             }
 
-            if (i < LoadLimit - 1) {
+            var response = {
+                html: containerTable.innerHTML,
+                pageTitle: `Creator`,
+                page: (page+1),
+                checkAll: checkAll
+            }
+            
+            processAjaxData(response, `?MaTruyen=${MaTruyen}&page=${page+1}`);
+            
+
+            if (Number(i) + 1 < LoadLimit) {
                 checkAll = true;
             }
-            numitems += i;
+            page++; 
         }
     });
 }
 
+function setUp() {
+    console.log(urlSearchPath = window.location.search);
+    var urlParams = new URLSearchParams(urlSearchPath); 
+    console.log();
+    MaTruyen = urlParams.get('MaTruyen');
+    page = Number(urlParams.get('page') != null ? urlParams.get('page')-1: 0);
+}
 
+function processAjaxData(response, urlPath){
+    window.history.pushState({"html":response.html,"pageTitle":response.pageTitle, page: response.page},"", urlPath);
+}
+
+window.onpopstate = function(e){
+    if(e.state){
+        containerTable.innerHTML = e.state.html;
+        //document.title = e.state.pageTitle;
+        page = e.state.page;
+        checkAll = e.state.checkAll;
+        console.log(e.state.page);
+    }
+};
 
 document.querySelector('.next').onclick = function () {
     if (!checkAll) {
@@ -91,14 +118,15 @@ document.querySelector('.next').onclick = function () {
 }
 
 document.querySelector('.pre').onclick = function () {
-    if (numitems > LoadLimit) {
-        numitems -= (LoadLimit * 2);
+    if (page > 1) {
+        page -= 2;
         loadRow();
+        checkAll = false;
     }
 }
 
 function resetLoad() {
-    numitems = 0;
+    page = 0;
     loadRow();
 }
 
@@ -109,15 +137,15 @@ const close = document.querySelector('.createEP .head div');
 const createEPButton = document.querySelector('.createEP form .create-bt');
 const showBt = document.querySelector('.head-bar div');
 
-close.onclick = function() {
+close.onclick = function () {
     createEP.classList.add('hidden');
 }
 
-showBt.onclick = function() {
+showBt.onclick = function () {
     createEP.classList.remove('hidden');
 }
 
-createEPButton.onclick = function() {
+createEPButton.onclick = function () {
     var formData = new FormData(document.querySelector('.createEP form'));
 
     $.ajax({
@@ -133,3 +161,7 @@ createEPButton.onclick = function() {
     });
 }
 
+//
+
+setUp();
+loadRow();

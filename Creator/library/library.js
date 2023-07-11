@@ -49,10 +49,10 @@ function loadRow() {
                 containerTable.appendChild(creactRow(data[i]['MaTruyen'] ,data[i]['AnhBia'], data[i]['TenTruyen'], data[i]['NoiDung'], data[i]['ls'], data[i]['sbl'], data[i]['slt'], data[i]['NgayTao'], data[i]['TenCD']));
             } 
             
-            if(i < LoadLimit-1) {
+            if(Number(i)+1 < LoadLimit) {
                 checkAll = true;
             }
-            numitems += i;
+            numitems += LoadLimit;
 
         }
     });
@@ -70,5 +70,6 @@ document.querySelector('.pre'). onclick = function() {
     if(numitems > LoadLimit) {
         numitems -= (LoadLimit * 2);
         loadRow();
+        checkAll = false;
     }
 }

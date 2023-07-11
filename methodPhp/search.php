@@ -107,13 +107,15 @@ if ($_GET) {
 
     $sql = $select . $from . $where . $grBy . $limit;
 
+    //echo $sql;
+
     $query = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($query) > 0) {
         $searchArr;
         $temp;
 
-        while ($temp = mysqli_fetch_array($query)) {
+        while ($temp = mysqli_fetch_assoc($query)) {
             $searchArr[] = $temp;
         }
 
@@ -230,7 +232,7 @@ if ($_POST) {
         $searchArr;
         $temp;
 
-        while ($temp = mysqli_fetch_array($query)) {
+        while ($temp = mysqli_fetch_assoc($query)) {
             $searchArr[] = $temp;
         }
 

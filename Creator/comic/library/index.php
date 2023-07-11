@@ -99,13 +99,8 @@ if($temp['id'] != $userID) {
 
     <!-- ====js==== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="../../index.js"></script>
+    <script src="../../../index.js"></script>
     <script src="library.js"></script>
-
-    <script>
-        setMaTruyen(<?php echo $MaTruyen?>);
-        loadRow();
-    </script>
 </body>
 
 </html>

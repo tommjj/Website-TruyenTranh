@@ -1,0 +1,19 @@
+
+
+order deny,allow
+
+allow from 127.0.0.1
+
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    Redirect /WEBTruynTranh/home.php /WEBTruynTranh/index.php
+    
+    RewriteEngine On
+    
+
+</IfModule>
+
+
+

@@ -1,31 +1,31 @@
 <h2>SLIDER</h2>
 <div class="slider-container">
     <div class="slider-main">
-        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="">
+        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="fiammetta">
             <div class="overlay"></div>
         </a>
-        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="">
+        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="fiammetta">
             <div class="overlay"></div>
         </a>
-        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="">
+        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="fiammetta">
             <div class="overlay"></div>
         </a>
-        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="">
+        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="fiammetta">
             <div class="overlay"></div>
         </a>
-        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="">
+        <a href="" class="slide "><img src="res/fiammetta-background.jpg" alt="fiammetta">
             <div class="overlay"></div>
         </a>
     </div>
 
-    <button onclick="preSlide()" class="left-button"><i class='bx bx-chevron-right bx-flip-horizontal'></i></button>
-    <button onclick="nextSlide()" class="right-button"><i class='bx bx-chevron-right bx-flip-vertical'></i></button>
+    <button onclick="preSlide()" class="left-button" aria-label="turn-left"><i class='bx bx-chevron-right bx-flip-horizontal'></i></button>
+    <button onclick="nextSlide()" class="right-button" aria-label="turn-right"><i class='bx bx-chevron-right bx-flip-vertical'></i></button>
     <div class="slider-bar">
-        <button></button>
-        <button></button>
-        <button></button>
-        <button></button>
-        <button></button>
+        <button aria-label="slider-1"></button>
+        <button aria-label="slider-2"></button>
+        <button aria-label="slider-3"></button>
+        <button aria-label="slider-4"></button>
+        <button aria-label="slider-5"></button>
     </div>
 </div>
 

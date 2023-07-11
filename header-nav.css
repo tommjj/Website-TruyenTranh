@@ -260,6 +260,7 @@ header.hidden {
     background-color: var(--nav-color);
     transition: 0.3s;
     overflow: hidden;
+    
     /* box-shadow: 3PX 0px 8px rgba(0, 0, 0, 0.2); */
     z-index: 998;
     border-right:  var(--primary-border);
@@ -286,10 +287,14 @@ header.hidden {
 
 .nav div {
     width: 180px;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .nav ul {
     color: var(--nav-font-color);
+    
 }
 
 .nav ul li a {
@@ -308,6 +313,8 @@ header.hidden {
 
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    
 }
 
 .nav ul li a i {
@@ -416,6 +423,7 @@ header.hidden {
     flex-direction: column;
     align-items: center;
     transition: var(--tran-04);
+    overflow: hidden;
 }
 
 .nav .user .avt {
@@ -428,12 +436,14 @@ header.hidden {
 .nav .user .avt img {
     width: 100%;
     border-radius: 100px;
+    overflow: hidden;
 }
 
 .nav .user .name {
     width: 100%;
     text-align: center;
     font-size: 20px;
+    overflow: hidden;
 }
 
 .nav.active:not(:hover) .user {
@@ -459,6 +469,7 @@ header.hidden {
     background-color: var(--header-color);
     left: 0;
     bottom: 0;
+    z-index: 3;
 }
 
 .contact a {

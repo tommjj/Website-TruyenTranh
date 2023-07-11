@@ -66,7 +66,7 @@ if($temp['id'] != $userID) {
                 <form action="" class="add-img" enctype="multipart/form-data">
                     <p>Thêm trang.</p>
                     <input type="hidden" name="MaTap" value="<?php echo $MaTap?>">
-                    <input type="file" name="img" id="">
+                    <input type="file" name="img" id="" multiple>
                 </form>
             </div>
         </div>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- RewriteRule ^([^\.]+)$  $1.php [NC,L] -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +10,21 @@
 </head>
 
 <body>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <img src="getImage.php?name=Andreana.png" alt="">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
     <script>
-        var data = {
-           MaTruyen: 2
-        }
+        // var data = {
 
-        $.ajax({
-            type: 'GET',
-            url: 'Creator/comic/php/GetEP.php',
-            data: data,
-            success: function (data) {      
-                console.log(data);
-                
-            }
-        });
+        // }
+
+        // $.ajax({
+        //     type: 'POST',
+        //     url: 'test.php',
+        //     data: data,
+        //     success: function (data) {      
+        //         console.log(data);
+        //     }
+        // });
     </script>
 </body>
 

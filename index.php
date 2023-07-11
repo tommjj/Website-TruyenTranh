@@ -27,7 +27,8 @@ if (isset($_GET['search'])) {
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="responsive-index.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>HOME</title>
+    <meta name="description" content="A website read comic.">
+    <title>WEB Truyen Tranh</title>
 </head>
 
 <body id="body">

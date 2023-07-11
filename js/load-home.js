@@ -5,7 +5,7 @@ const body = document.getElementById('body');
 
 var loadAll = false;
 var nuberItems = 0;
-var limitLoad = 20;
+var limitLoad = 25;
 
 function loadItem() {
     if (loadAll) {
@@ -13,6 +13,7 @@ function loadItem() {
     }
 
     if (!(container === null)) {
+        console.log(loadAll);
         var data = {
             search: '',
             like: 3,
@@ -21,22 +22,23 @@ function loadItem() {
             limit: limitLoad
         }
 
-        console.log('s');
+        console.log(nuberItems);
 
         $.ajax({
             type: 'GET',
             url: window.location.protocol + '//' + window.location.hostname + '/WEBTruynTranh/methodPhp/search.php',
             data: data,
-            cache: false,
             success: function (data) {
+                console.log(data)
                 if (data != '') {
                     data = JSON.parse(data);
 
+                    
                     for (var i in data) {
                         container.appendChild(creatItem(data[i].AnhBia, data[i].TenTruyen, data[i].NoiDung, data[i].MaTruyen));
                     }
-                    nuberItems += i;
-                    if (i < limitLoad-1) loadAll = true;
+                    nuberItems +=  Number(i)+1;
+                    if (Number(i)+1 < limitLoad) loadAll = true;
                 }
             }
         });
@@ -48,7 +50,7 @@ function scrollContainer(event) {
     if (!(container === null)) {
         var offset = (container.offsetHeight + container.offsetTop) - window.pageYOffset - body.offsetHeight;
 
-        if (offset < 20) {
+        if (offset < 50) {
             loadItem();
         }
     }
