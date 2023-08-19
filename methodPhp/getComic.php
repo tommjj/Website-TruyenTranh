@@ -35,7 +35,7 @@ if($_GET) {
  
     $temp;
     $data;
-    while($temp =  mysqli_fetch_array($query)) {
+    while($temp =  mysqli_fetch_assoc($query)) {
         $data[] = $temp;
     }
 
@@ -49,7 +49,7 @@ if($_GET) {
  
     $temp;
     $data;
-    while($temp =  mysqli_fetch_array($query)) {
+    while($temp =  mysqli_fetch_assoc($query)) {
         $data[] = $temp;
     }
     echo json_encode($data);
